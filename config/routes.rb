@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   resources :profiles, only: [:new, :create, :show, :edit, :update]
 
-  devise_for :users
-  root to: 'pages#home'
+  root to: "trainings#index"
+
+  devise_for :users,
+  controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
