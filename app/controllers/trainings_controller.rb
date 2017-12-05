@@ -19,6 +19,7 @@ class TrainingsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
