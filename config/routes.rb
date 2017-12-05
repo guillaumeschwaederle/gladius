@@ -1,29 +1,10 @@
 Rails.application.routes.draw do
-  get 'series/create'
 
-  get 'series/update'
+  resources :trainings, only: [:index, :new, :create, :edit, :update] do
+    resources :series, only: [:create, :update, :destroy]
+  end
 
-  get 'series/destroy'
-
-  get 'trainings/index'
-
-  get 'trainings/new'
-
-  get 'trainings/create'
-
-  get 'trainings/edit'
-
-  get 'trainings/update'
-
-  get 'profiles/new'
-
-  get 'profiles/create'
-
-  get 'profiles/show'
-
-  get 'profiles/edit'
-
-  get 'profiles/update'
+  resources :profiles, only: [:new, :create, :show, :edit, :update]
 
   devise_for :users
   root to: 'pages#home'
