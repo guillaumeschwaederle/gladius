@@ -1,2 +1,12 @@
 <h1>Profiles#show</h1>
 <p>Find me in app/views/profiles/show.html.erb</p>
+
+<%= current_user.profile.first_name %>
+<%= current_user.profile.last_name %>
+<%= current_user.profile.height %> <%= "cm" if current_user.profile.height %>
+<%= current_user.profile.weight %> <%= "kg" if current_user.profile.weight %>
+<%= link_to "Edit", edit_profile_path, class: "btn btn-primary" %>
+<hr>
+<%= current_user.email %>
+
+<%= link_to "Modifier mes informations de connexion", edit_user_registration_path, class: "btn btn-primary" %>
