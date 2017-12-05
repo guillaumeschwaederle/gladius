@@ -37,6 +37,6 @@ class TrainingsController < ApplicationController
   end
 
   def training_params
-    params.require(:training).permit(:name, :goal, :profile_id)
+    params.require(:training).permit(:name, :profile_id)
   end
 end
