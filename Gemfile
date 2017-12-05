@@ -9,11 +9,9 @@ gem 'puma'
 gem 'rails', '5.1.4'
 gem 'redis'
 
-#seed
 gem 'faker'
 
 gem 'nokogiri'
-
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
@@ -22,6 +20,8 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+gem 'figaro'
+gem 'omniauth-facebook'
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
