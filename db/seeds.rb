@@ -91,3 +91,17 @@ puts "Users Created !"
 puts "__________________"
 puts "SEED ENDED"
 puts "-" * 50
+
+puts "                ````````                                                                            
+            `-oydNMMMMNdy:                                                                          
+          -smMMMMNNNNMMMm-                                                                          
+        `oNMMmdhoddo::/o-                                                                           
+        oMMmyysmshs:-.`    .-`          `-.       `-----.`      .-`   `-.     .-`    `.---.`        
+        mMmshyydhyssyh/    hN.         `hmN/      :Ndyyyhhy:    oM/   -My     yM-   :ddyyhho        
+        NMoy+hM/`    .`    dM.        `hN-yN:     /Ms   `.yN/   oM/   -My     yM:   sMh:.`.`        
+        sMo``NN`   :hhy    dM.       `yN/..dN:    /Ms     -Mh   oM/   -My     yM-   `/syhdh/        
+        .Nd  +Nh:.`.:mm    dM.      `sNdyyyhmm-   /Ms   `:dN:   oM/   `mm-` `-mN.  `+:.``:NN.       
+         my   .oyhhhys/    hNdhhhs  +m+`````.dd.  :Nmhhhhyo.    oN/    -shdhdhs-   `oyddddh/        
+       `/y`     `````      ```````  ``       ```  ````````      ```      `````       ``````         
+        `                                                                                           
+"
