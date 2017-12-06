@@ -80,29 +80,38 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
                             <!-- item-->
-                            <div class="dropdown-item noti-title">
-                                <h5 class="text-overflow"><small class="text-white">Welcome ! John</small> </h5>
-                            </div>
+
+                            <% unless current_user %>
+                              <%= link_to new_user_session, class: "dropdown-item notify-item" do %>
+                                <i class="mdi mdi-account-star-variant"></i> <span>Se connecter</span>
+                              <% end %>
+                            <% end %>
+
+
+                            <% if current_user.profile %>
+                              <div class="dropdown-item noti-title">
+                                  <h5 class="text-overflow"><small class="text-white">Welcome ! current_user.profile.first_name</small> </h5>
+                              </div>
+                            <% end %>
+
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="mdi mdi-account-star-variant"></i> <span>Profile</span>
-                            </a>
+                            <% if current_user.profile %>
+                              <%= link_to profile_path(current_user.profile), class: "dropdown-item notify-item" do %>
+                                <i class="mdi mdi-account-star-variant"></i> <span>Profil</span>
+                              <% end %>
+                            <% else %>
+                              <%= link_to new_profile_path, class: "dropdown-item notify-item" do %>
+                                <i class="mdi mdi-account-star-variant"></i> <span>Créer mon profil</span>
+                              <% end %>
+                            <% end %>
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="mdi mdi-settings"></i> <span>Settings</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="mdi mdi-lock-open"></i> <span>Lock Screen</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <% if current_user.profile %>
+                              <%= link_to edit_profile_path(current_user.profile), class: "dropdown-item notify-item" do %>
                                 <i class="mdi mdi-logout"></i> <span>Logout</span>
-                            </a>
+                              <% end %>
+                            <% end %>
                         </div>
                     </li>
 
