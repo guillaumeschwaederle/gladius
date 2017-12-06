@@ -5,9 +5,9 @@
       <div class="member-card">
         <div class="thumb-lg member-thumb m-b-10 center-page">
           <% if current_user.profile.photo? %>
-          <%= cl_image_tag @profile.photo, class: "rounded-circle img-thumbnail" %>
+          <%= cl_image_tag @profile.photo, class: "rounded-circle img-thumbnail photo-profil" %>
           <% else %>
-          <%= cl_image_tag "placeholder-gladius_tzhg4x.png", class: "rounded-circle-img-thumbnail"%>
+          <%= cl_image_tag "placeholder-gladius_tzhg4x.png", class: "rounded-circle img-thumbnail photo-profil"%>
           <% end %>
         </div>
       <div class="">
