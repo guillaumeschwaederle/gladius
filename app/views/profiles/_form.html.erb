@@ -1,0 +1,8 @@
+<%= simple_form_for @profile do |f| %>
+  <%= f.input :first_name, placeholder: "Jean" %>
+  <%= f.input :last_name, placeholder: "Rochefort" %>
+  <%= f.input :height, placeholder: "120" %>
+  <%= f.input :weight, placeholder: "120" %>
+  <%= f.input :user_id, as: :hidden, value: current_user.id %>
+  <%= f.submit "Valider mon profil", class: "btn btn-primary btn-primary" %>
+<% end %>
