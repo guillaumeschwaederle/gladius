@@ -8,11 +8,11 @@
 puts "-" * 50
 puts "SEEDING GLADIUS STARTING"
 
-User.destroy_all
-Profile.destroy_all
-Training.destroy_all
 Serie.destroy_all
 Exercice.destroy_all
+Training.destroy_all
+Profile.destroy_all
+User.destroy_all
 
 require 'open-uri'
 require 'nokogiri'
@@ -143,7 +143,7 @@ puts "End Training done creation"
 
 rep = 1
 puts "Start Training creation"
-2.times do
+10.times do
   t = Training.create!(
     name: "Programme middle #{rep}",
     profile: Profile.first
@@ -173,7 +173,7 @@ puts "End Training middle creation"
 
 rep = 1
 puts "Start Training creation"
-2.times do
+10.times do
   t = Training.create!(
     name: "Programme pas fait #{rep}",
     profile: Profile.first
