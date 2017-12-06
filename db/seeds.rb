@@ -113,12 +113,39 @@ puts "-" * 50
 
 
 
-# Seeds Training
+############# Seeds Training + séries
+
+# Training done
 rep = 1
-puts "Start Training creation"
+puts "Start Training done creation"
 10.times do
   t = Training.create!(
-    name: "Programme #{rep}",
+    name: "Programme fait#{rep}",
+    profile: Profile.first
+  )
+  srep = Exercice.first
+  puts "Start Serie creation"
+  5.times do
+    series_done = Serie.create!(
+      goal: 100,
+      done: 90,
+      exercice: srep,
+      training: t
+    )
+  end
+  puts "End Serie creation"
+  rep += 1
+end
+puts "End Training done creation"
+
+
+# Training midlle (done & not done)
+
+rep = 1
+puts "Start Training creation"
+2.times do
+  t = Training.create!(
+    name: "Programme middle #{rep}",
     profile: Profile.first
   )
   srep = Exercice.first
@@ -139,9 +166,31 @@ puts "Start Training creation"
   puts "End Serie creation"
   rep += 1
 end
-puts "End Training creation"
+puts "End Training middle creation"
 
 
+# Training not done
+
+rep = 1
+puts "Start Training creation"
+2.times do
+  t = Training.create!(
+    name: "Programme pas fait #{rep}",
+    profile: Profile.first
+  )
+  srep = Exercice.first
+  puts "Start Serie creation"
+  5.times do
+    series_not_done = Serie.create!(
+      goal: 100,
+      exercice: srep,
+      training: t
+    )
+  end
+  puts "End Serie creation"
+  rep += 1
+end
+puts "End Training not done creation"
 
 
 
