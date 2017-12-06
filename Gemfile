@@ -18,14 +18,16 @@ gem 'faker'
 
 gem 'nokogiri'
 gem 'autoprefixer-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'font-awesome-sass'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'jquery-rails'
 
 gem 'omniauth-facebook'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
