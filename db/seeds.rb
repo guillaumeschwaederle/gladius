@@ -85,6 +85,21 @@ users = []
     )
     n += 1
 end
+
+puts "Creating Admin users..."
+
+admin_user = User.create!(
+        email: "guillaume@gmail.com",
+        password: "123456",
+        admin: true
+)
+    Profile.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    user: admin_user
+)
+
+
 puts "number of User created :"
 puts users.size
 puts "Users Created !"
@@ -94,11 +109,11 @@ puts "-" * 50
 
 puts "                ````````                                                                            
             `-oydNMMMMNdy:                                                                          
-          -smMMMMNNNNMMMm-                                                                          
-        `oNMMmdhoddo::/o-                                                                           
-        oMMmyysmshs:-.`    .-`          `-.       `-----.`      .-`   `-.     .-`    `.---.`        
-        mMmshyydhyssyh/    hN.         `hmN/      :Ndyyyhhy:    oM/   -My     yM-   :ddyyhho        
-        NMoy+hM/`    .`    dM.        `hN-yN:     /Ms   `.yN/   oM/   -My     yM:   sMh:.`.`        
+          -smMMMMNN NMMMm-                                                                          
+        `oNMM dho d ::/o-                                                                           
+        oMMmyy mshs:-.`    .-`          `-.       `-----.`      .-`   `-.     .-`    `.---.`        
+        m m h enculé!!/    hN.         `hmN/      :Ndyyyhhy:    oM/   -My     yM-   :ddyyhho        
+        NMoy hM/`    .`    dM.        `hN-yN:     /Ms   `.yN/   oM/   -My     yM:   sMh:.`.`        
         sMo``NN`   :hhy    dM.       `yN/..dN:    /Ms     -Mh   oM/   -My     yM-   `/syhdh/        
         .Nd  +Nh:.`.:mm    dM.      `sNdyyyhmm-   /Ms   `:dN:   oM/   `mm-` `-mN.  `+:.``:NN.       
          my   .oyhhhys/    hNdhhhs  +m+`````.dd.  :Nmhhhhyo.    oN/    -shdhdhs-   `oyddddh/        
