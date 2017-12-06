@@ -11,7 +11,7 @@
     </div>
     <div class="row list_training">
       <%= render 'shared/card_training' %>
-      <% @trainings.each do |training| %>
+      <% @trainings.order('updated_at desc').each do |training| %>
         <div class="col-sm-4 col-12 ">
           <div class="card m-b-20 ">
             <div class="card-header">
