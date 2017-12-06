@@ -1,4 +1,60 @@
-<h1>Trainings#index</h1>
-<p>Find me in app/views/trainings/index.html.erb</p>
+<div class="content">
+  <div class="left_section">
+    <div class="row">
+      <%= render "shared/card_stat" %>
+      <%= render "shared/card_stat" %>
+      <%= render "shared/card_stat" %>
+    </div>
+    <div class="text-right">
+      <%= link_to "Créer votre programme", new_training_path, class: "btn btn-primary" %>
+    </div>
+    <div class="container">
 
-<%= render "index_exercices" %>
+    </div>
+  </div>
+  <div class="right_section">
+
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $( document ).ready(function() {
+      $('.counter').counterUp({
+          delay: 100,
+          time: 1200
+      });
+      $('.circliful-chart').circliful();
+    });
+  <% end %>
+<% end %>
+
+
+
+
+
+<!-- <div class="grid_section">
+  <div class="left_section">
+    <div class="stat_section">
+      <p>hoho</p>
+    </div>
+    <div class="training_section">
+
+    </div>
+  </div>
+  <div class="right_section text-right">
+    <p>toto</p>
+  </div>
+</div>
+
+ -->
+
+
+
+
+
+
+
+
+
+
