@@ -21,8 +21,13 @@
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <% if current_user.profile %>
-                <%= link_to 'profile_path(current_user.profile)' do %>
+                <%= link_to profile_path(current_user.profile) do %>
                   <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                <% end %>
+              <% end %>
+              <% unless current_user.profile %>
+                <%= link_to new_profile_path(current_user.profile) do %>
+                  <i class="fa fa-user"></i> <%= t(".profile", default: "Créer votre profil") %>
                 <% end %>
               <% end %>
             </li>
