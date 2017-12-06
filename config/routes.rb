@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  ActiveAdmin.routes(self)
   resources :trainings, only: [:index, :new, :create, :edit, :update] do
     resources :series, only: [:create, :update, :destroy]
   end
