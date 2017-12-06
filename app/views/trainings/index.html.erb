@@ -5,10 +5,11 @@
       <%= render "shared/card_stat" %>
       <%= render "shared/card_stat" %>
     </div>
+    <hr>
     <div class="text-right">
-      <%= link_to "Créer votre programme", new_training_path, class: "btn btn-primary" %>
+      <%= link_to "Créer votre programme", new_training_path, class: "btn btn-primary btn_new" %>
     </div>
-    <div class="container row list_training">
+    <div class="row list_training">
       <%= render 'shared/card_training' %>
       <% @trainings.each do |training| %>
         <div class="col-sm-4 col-12 ">
@@ -19,8 +20,12 @@
             <div class="card-body card_relative">
                 <% average_arr = [] %>
                 <% training.series.each do |serie| %>
-                  <% completion = serie.done / serie.goal.to_f unless serie.done.nil? %>
-                  <% average_arr << completion if completion%>
+                  <% if serie.done.nil? %>
+                    <% completion = 0 %>
+                  <% else %>
+                    <% completion = serie.done / serie.goal.to_f unless serie.done.nil? %>
+                  <% end %>
+                  <% average_arr << completion %>
                 <% end %>
                 <% unless average_arr == [] %>
                   <% a = average_arr.sum / average_arr.size * 100 %>
@@ -29,7 +34,7 @@
                 <% end %>
                 <p class="card_completion"><%= a %> % </p>
                 <% if a == 0 %>
-                  <i class="fa fa- fa-times-circle card_icone icone_red"></i>
+                  <i class="fa fa- fa-times-circle card_icone icone_red" aria-hidden="true"></i>
                 <% else %>
                   <i class="fa fa-thumbs-up card_icone icone_green"></i>
                 <% end %>
