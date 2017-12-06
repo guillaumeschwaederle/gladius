@@ -81,21 +81,17 @@
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
                             <!-- item-->
 
-                            <% unless current_user %>
-                              <%= link_to new_user_session, class: "dropdown-item notify-item" do %>
-                                <i class="mdi mdi-account-star-variant"></i> <span>Se connecter</span>
-                              <% end %>
-                            <% end %>
-
-
+                          <% if current_user %>
                             <% if current_user.profile %>
                               <div class="dropdown-item noti-title">
                                   <h5 class="text-overflow"><small class="text-white">Welcome ! current_user.profile.first_name</small> </h5>
                               </div>
                             <% end %>
+                          <% end %>
 
 
                             <!-- item-->
+                          <% if current_user %>
                             <% if current_user.profile %>
                               <%= link_to profile_path(current_user.profile), class: "dropdown-item notify-item" do %>
                                 <i class="mdi mdi-account-star-variant"></i> <span>Profil</span>
@@ -105,13 +101,16 @@
                                 <i class="mdi mdi-account-star-variant"></i> <span>Créer mon profil</span>
                               <% end %>
                             <% end %>
+                          <% end %>
 
                             <!-- item-->
+                          <% if current_user %>
                             <% if current_user.profile %>
                               <%= link_to edit_profile_path(current_user.profile), class: "dropdown-item notify-item" do %>
                                 <i class="mdi mdi-logout"></i> <span>Logout</span>
                               <% end %>
                             <% end %>
+                          <% end %>
                         </div>
                     </li>
 
