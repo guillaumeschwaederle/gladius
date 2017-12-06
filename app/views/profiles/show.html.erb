@@ -12,7 +12,7 @@
         </div>
       <div class="">
         <h4 class="m-b-5 mt-2"><%= current_user.profile.first_name %> <%= current_user.profile.last_name %></h4>
-        <p class="text-muted">@webdesigner</p>
+        <p class="text-muted"><%= current_user.email %></p>
       </div>
         <!-- <button type="button" class="btn btn-success btn-sm w-sm waves-effect m-t-10 waves-light"><%= link_to "Edit", edit_profile_path%></button> -->
         <%= link_to "Modifier profil", edit_profile_path, class: "btn btn-success btn-sm w-sm waves-effect m-t-10 waves-light" %>
@@ -22,8 +22,8 @@
         <div class="text-left m-t-40">
           <p class="text-muted font-13"><strong>Taille :</strong> <span class="m-l-15"><%= current_user.profile.height %> <%= "cm" if current_user.profile.height %></span></p>
           <p class="text-muted font-13"><strong>Poids :</strong><span class="m-l-15"><%= current_user.profile.weight %> <%= "kg" if current_user.profile.weight %></span></p>
-          <p class="text-muted font-13"><strong>Email :</strong> <span class="m-l-15"><%= current_user.email%></span></p>
-          <p class="text-muted font-13"><strong>Location :</strong> <span class="m-l-15">USA</span></p>
+          <p class="text-muted font-13"><strong>Ville :</strong> <span class="m-l-15"><%= current_user.profile.ville%></span></p>
+          <p class="text-muted font-13"><strong>Mon exo phare :</strong> <span class="m-l-15"><%= current_user.profile.specialite%></span></p>
         </div>
           <ul class="social-links list-inline m-t-30 mb-0">
             <li class="list-inline-item">
