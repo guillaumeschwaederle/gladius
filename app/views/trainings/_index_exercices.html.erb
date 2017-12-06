@@ -1,11 +1,17 @@
 
 <% @exercices = Exercice.all %>
-
-<% @exercices.each do |exercice| %>
-<div>
-<h2><%= exercice.name %> </h2>
-<h3>Category: <%= exercice.category %> </h3>
-<p>  <%= exercice.description %> </p>
+<div class="container">
+    <div class="row">
+        <% @exercices.each do |exercice| %>
+            <div class="col-sm-4 col-lg-3 col-xs-12">
+                <div class="card m-b-20">
+                    <img class="card-img-top img-fluid" src="http://www.musculaction.com/images/intro-curl-barre.jpg" alt="Card image cap">
+                    <div class="card-body">
+                    <h3><%= exercice.name %> </h2>
+                        <p>  <%= exercice.description %> </p>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
 </div>
-
-<% end %>
