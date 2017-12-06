@@ -5,7 +5,8 @@
 .card_icone {
   position: absolute;
   right: 10px;
-  bottom: 10px
+  bottom: 10px;
+  color: white
 }
 
 .card_completion {
@@ -18,26 +19,19 @@
   padding: 30px
 }
 
-.icone_red {
-  color: red
-}
-
-.icone_green {
-  color: green
-}
-
 .card_stat {
   margin: 20px 10px
 }
 
 hr {
-height: 1px;
-color: #9AA6AC;
-background-color: #9AA6AC;
-border: none;
-margin: 10px 30px
+  height: 1px;
+  color: #9AA6AC;
+  background-color: #9AA6AC;
+  border: none;
+  margin: 10px 40px
 }
 
 .btn_new {
-  margin-top: 10px
+  margin-top: 10px;
+  margin-right: 30px
 }

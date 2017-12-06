@@ -32,11 +32,15 @@
                 <% else %>
                   <% a = 0 %>
                 <% end %>
-                <p class="card_completion"><%= a %> % </p>
+                <p class="card_completion"><%= a %> %</p>
                 <% if a == 0 %>
-                  <i class="fa fa- fa-times-circle card_icone icone_red" aria-hidden="true"></i>
+                  <%= button_tag type: 'submit', class: "btn btn-danger card_icone" do %>
+                     ✖
+                  <% end %>
                 <% else %>
-                  <i class="fa fa-thumbs-up card_icone icone_green"></i>
+                  <%= button_tag type: 'submit', class: "btn btn-success card_icone" do %>
+                     ✔
+                  <% end %>
                 <% end %>
                 <blockquote class="card-bodyquote align-bottom">
                   <% if a != 0 && training.updated_at != training.created_at %>
