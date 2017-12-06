@@ -1,0 +1,17 @@
+.content {
+  width: 100%;
+  height: calc(100vh - 122px);
+  display: flex;
+}
+
+.right_section {
+  // background-color: red;
+  width: 30%;
+}
+
+
+.left_section {
+  width: 70%;
+  // background-color: blue;
+  overflow: scroll;
+}
