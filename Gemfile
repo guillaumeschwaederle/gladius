@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.3.5'
 
+#medias
+#Update images
+gem 'carrierwave', '~> 0.11.2'
+gem 'cloudinary'
+
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
@@ -21,10 +26,11 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'jquery-rails'
 
-gem 'figaro'
 gem 'omniauth-facebook'
 
 group :development, :test do
+  gem 'binding_of_caller'
+  gem 'better_errors'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'web-console', '>= 3.3.0'
@@ -32,3 +38,4 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
