@@ -1,0 +1,11 @@
+
+<% @exercices = Exercice.all %>
+
+<% @exercices.each do |exercice| %>
+<div>
+<h2><%= exercice.name %> </h2>
+<h3>Category: <%= exercice.category %> </h3>
+<p>  <%= exercice.description %> </p>
+</div>
+
+<% end %>
