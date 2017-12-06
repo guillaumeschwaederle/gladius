@@ -1,18 +1,45 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<div class="container">
+<div class="row justify-content-md-center">
+  <div class=" col-md-offset-3 col-md-6">
+    <div class="text-center card-box">
+      <div class="member-card">
+        <div class="thumb-lg member-thumb m-b-10 center-page">
+          <% if current_user.profile.photo? %>
+          <%= cl_image_tag @profile.photo, class: "rounded-circle img-thumbnail" %>
+          <% else %>
+          <%= cl_image_tag "placeholder-gladius_tzhg4x.png", class: "rounded-circle-img-thumbnail"%>
+          <% end %>
+        </div>
+      <div class="">
+        <h4 class="m-b-5 mt-2"><%= current_user.profile.first_name %> <%= current_user.profile.last_name %></h4>
+        <p class="text-muted">@webdesigner</p>
+      </div>
+        <!-- <button type="button" class="btn btn-success btn-sm w-sm waves-effect m-t-10 waves-light"><%= link_to "Edit", edit_profile_path%></button> -->
+        <%= link_to "Modifier profil", edit_profile_path, class: "btn btn-success btn-sm w-sm waves-effect m-t-10 waves-light" %>
+        <!-- <button type="button" class="btn btn-danger btn-sm w-sm waves-effect m-t-10 waves-light">Message</button>
+         -->
+        <%= link_to "Email / mot de passe", edit_user_registration_path, class: "btn btn-danger btn-sm w-sm waves-effect m-t-10 waves-light"%>
+        <div class="text-left m-t-40">
+          <p class="text-muted font-13"><strong>Taille :</strong> <span class="m-l-15"><%= current_user.profile.height %> <%= "cm" if current_user.profile.height %></span></p>
+          <p class="text-muted font-13"><strong>Poids :</strong><span class="m-l-15"><%= current_user.profile.weight %> <%= "kg" if current_user.profile.weight %></span></p>
+          <p class="text-muted font-13"><strong>Email :</strong> <span class="m-l-15"><%= current_user.email%></span></p>
+          <p class="text-muted font-13"><strong>Location :</strong> <span class="m-l-15">USA</span></p>
+        </div>
+          <ul class="social-links list-inline m-t-30 mb-0">
+            <li class="list-inline-item">
+              <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+          <!--   </li>
+            <li class="list-inline-item">
+              <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a> -->
+            </li>
+          </ul>
+        </div>
+      </div> <!-- end card-box -->
+    </div> <!-- end col -->
+</div>
+</div>
+                <!-- end row -->
 
-<%= current_user.profile.first_name %>
-<%= current_user.profile.last_name %>
-<%= current_user.profile.height %> <%= "cm" if current_user.profile.height %>
-<%= current_user.profile.weight %> <%= "kg" if current_user.profile.weight %>
-<%= link_to "Edit", edit_profile_path, class: "btn btn-primary" %>
-<hr>
-<%= current_user.email %>
-
-<% if current_user.profile.photo? %>
-   <%= cl_image_tag @profile.photo, height: 200, width: 200, crop: :thumb, gravity: :face %>
- <% else %>
-   <%= cl_image_tag "placeholder-gladius_tzhg4x.png", height: 200, width: 200 %>
- <% end %>
-
-<%= link_to "Modifier mes informations de connexion", edit_user_registration_path, class: "btn btn-primary" %>
