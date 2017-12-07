@@ -1,22 +1,33 @@
 <div class="wrapper-page">
    <div class="text-center">
-      <a href="index.html" class="logo-lg"><i class="mdi mdi-radar"></i> <span>GLADIUS</span> </a>
+      <!-- <a href="index.html" class="logo-lg"><i class="mdi mdi-radar"></i> <span>GRODIUS</span> </a> -->
+    <%= link_to trainings_path, class: "logo" do %>
+              <div class="logo logo-gladius">
+              <%= cl_image_tag "logo-gladius-yellow.png", height: "100", class:"logo-lg" %>
+              </div>
+            <% end %>
    </div>
    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
    <div class="form-inputs">
-      <%= f.input :email, required: false, autofocus: true %>
+      <%= f.input :email, required: false, autofocus: true, placeholder: "Fix@lewagon.org" %>
       <%= f.input :password, required: false %>
    </div>
    <div class="form-actions form-group text-center m-t-20">
       <div class="col-sm-12 text-center">
-        <%= f.button :submit, "Se connecter", class:"btn btn-primary", type:"submit"%>
-        <div class="col-sm-12">
-        <hr>
-      <%= link_to "Vous n'avez pas encore de compte, créez-en un ici !", new_registration_path(resource_name), class:"text-muted" %>
-        </hr>
-    </div>
+        <%= f.button :submit, "Se connecter", class:"btn btn-primary button-connect", type:"submit"%>
+
       </div>
    </div>
 <%= render "devise/shared/links" %>
+<br />
+
+<div class="col-sm-12 text-center">
+
+      <%= link_to "Pas encore de compte ? Par ici !", new_registration_path(resource_name), class:"text-muted" %> <br />
+
+      <%= link_to "Vous avez oublié votre mot de passe ?", new_password_path(resource_name), class:"text-muted" %><br />
+    </div>
+    </div>
    <% end %>
+  </div>
 </div>

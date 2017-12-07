@@ -4,16 +4,13 @@
   <%- resource_class.omniauth_providers.each do |provider| %>
       <div class="col-sm-12">
         <br />
-    <%= link_to "Se connecter avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"facebook-button" %><br />
+    <%= link_to "Se connecter avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn btn-primary facebook-button" %><br />
       </div>
   <% end -%>
 
-<hr>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-    <div class="col-sm-12">
-  <%= link_to "Vous avez oublié votre mot de passe ?", new_password_path(resource_name), class:"text-muted" %><br />
-    </div>
+
 <% end -%>
 
 
