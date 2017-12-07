@@ -32,7 +32,7 @@
                         <% if current_user %>
                           <% if current_user.profile %>
                             <% if current_user.profile.photo? %>
-                              <%= cl_image_tag current_user.profile.photo, class: "rounded-circle" %>
+                              <%= cl_image_tag current_user.profile.photo,  :gravity=>"face", :width=>36, :height=>36, :crop=>"fill", class: "rounded-circle" %>
                             <% else %>
                               <%= cl_image_tag "placeholder-gladius_tzhg4x.png", class: "rounded-circle" %>
   <!--                             <img src="assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle"> -->

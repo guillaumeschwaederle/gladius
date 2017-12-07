@@ -1,13 +1,13 @@
 <div class="container">
 <div class="row justify-content-md-center">
   <div class=" col-md-offset-3 col-md-6">
-    <div class="text-center card-box">
+    <div class="text-center card-box gladius-card">
       <div class="member-card">
-        <div class="thumb-lg member-thumb m-b-10 center-page">
+        <div class="m-b-10 center-page">
           <% if current_user.profile.photo? %>
-          <%= cl_image_tag @profile.photo, class: "rounded-circle img-thumbnail photo-profil" %>
+          <%= cl_image_tag @profile.photo, class: "rounded-circle img-thumbnail photo-profil", :gravity=>"face", :width=>120, :height=>120, :crop=>"fill" %>
           <% else %>
-          <%= cl_image_tag "placeholder-gladius_tzhg4x.png", class: "rounded-circle img-thumbnail photo-profil"%>
+          <%= cl_image_tag "placeholder-gladius_tzhg4x.png", class: "rounded-circle img-thumbnail photo-profil", :gravity=>"face", :width=>120, :height=>120, :crop=>"fill" %>
           <% end %>
         </div>
       <div class="">
@@ -19,7 +19,7 @@
         <!-- <button type="button" class="btn btn-danger btn-sm w-sm waves-effect m-t-10 waves-light">Message</button>
          -->
         <%= link_to "Email / mot de passe", edit_user_registration_path, class: "btn btn-danger btn-sm w-sm waves-effect m-t-10 waves-light"%>
-        <div class="text-left m-t-40">
+        <div class="text-center m-t-40">
           <p class="text-muted font-13"><strong>Taille :</strong> <span class="m-l-15"><%= current_user.profile.height %> <%= "cm" if current_user.profile.height %></span></p>
           <p class="text-muted font-13"><strong>Poids :</strong><span class="m-l-15"><%= current_user.profile.weight %> <%= "kg" if current_user.profile.weight %></span></p>
           <p class="text-muted font-13"><strong>Ville :</strong> <span class="m-l-15"><%= current_user.profile.ville%></span></p>
