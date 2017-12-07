@@ -1,1 +1,26 @@
-<%= render "index_exercices" %>
+<div class="content">
+
+<div class="left_section">
+
+   <h1 class="title-left-layout text-center">Ajouter un exercice à mon programme</h1>
+
+   <div class="row list_training">
+      <%= render "index_exercices" %>
+   </div>
+</div>
+
+<div class="right_section">
+   
+   <div class="container">
+        <div id="newserie">
+            <form id="newserie">
+             
+            </form>
+        </div>
+    </div>
+</div>
+
+<% content_for(:after_js) do %>
+    <% javascript_pack_tag 'new_training'%>
+<% end %>
+
