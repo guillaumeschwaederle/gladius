@@ -7,6 +7,7 @@ class TrainingsController < ApplicationController
 
   def new
     @training = Training.new
+    @serie = Serie.new
   end
 
   def create
@@ -39,4 +40,5 @@ class TrainingsController < ApplicationController
   def training_params
     params.require(:training).permit(:name, :profile_id)
   end
+
 end

@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  skip_before_action :profile_present?, only: [:new, :create]
   before_action :set_profile, only: [:show, :edit, :update]
 
   def new
