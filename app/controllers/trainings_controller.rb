@@ -3,9 +3,12 @@ class TrainingsController < ApplicationController
 
   def index
     @trainings = Training.all
-    @series = Serie.all.group_by { |s| [s.training.id, s.exercice.name] }
+    @series_training = Serie.all.group_by { |s| s.training.id }
     gon.trainings = @trainings
-    gon.series = @series
+    @exercices = Exercice.all
+    gon.series_training = @series_training
+    gon.series_exercice = @series_exercice
+    gon.exercices = @exercices
 
   end
 
