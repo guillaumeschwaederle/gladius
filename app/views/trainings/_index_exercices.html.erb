@@ -1,12 +1,10 @@
-
 <% @exercices = Exercice.all %>
 <div class="container">
     <div class="row">
-        <% @exercices.each do |exercice| %>
-            <div class="col-sm-4 col-lg-3 col-xs-12">
-                <div class="card m-b-20">
-                    <img class="card-img-top img-fluid" src="http://www.musculaction.com/images/intro-curl-barre.jpg" alt="Card image cap">
-                    <div class="card-body">
+        <% @exercices.take(20).each do |exercice| %>
+            <div class="col-sm-4">
+                <div class="card m-b-20"  data-name="<%= exercice.name %>">
+                    <div class="card-body card-exercice-hover">
                     <h3><%= exercice.name %> </h2>
                         <p>  <%= exercice.description %> </p>
                     </div>
