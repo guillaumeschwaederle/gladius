@@ -21,10 +21,18 @@
               <p class="card_completion"><%= training.completion %> %</p>
               <% if training.completion == 0 %>
                 <%= button_tag type: 'submit', class: "btn btn-danger card_icone" do %>
+                  ◷
+                <% end %>
+              <% elsif training.completion < 100 %>
+                <%= button_tag type: 'submit', class: "btn btn-warning card_icone" do %>
                    ✖
                 <% end %>
-              <% else %>
+              <% elsif training.completion == 100 %>
                 <%= button_tag type: 'submit', class: "btn btn-success card_icone" do %>
+                   ✔
+                <% end %>
+              <% else %>
+                <%= button_tag type: 'submit', class: "btn btn-primary card_icone" do %>
                    ✔
                 <% end %>
               <% end %>

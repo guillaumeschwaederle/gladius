@@ -19,8 +19,8 @@ const card = (name_exercice, progress) => {
 const progress = (goal, done) => {
   if (done > goal) {
     return `<div class="progress m-b-20">
-      <div class="progress-bar bg-success" role="progressbar" style="width: ${goal * 100}%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="${done}"></div>
-      <div class="progress-bar bg-info" role="progressbar" style="width: %" aria-valuenow="${done - goal * 100}}" aria-valuemin="0" aria-valuemax="${done}"></div>
+      <div class="progress-bar bg-success" role="progressbar" style="width: ${(goal / done) * 100}%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="${done}"></div>
+      <div class="progress-bar bg-info" role="progressbar" style="width: ${(done - goal)/ done * 100}%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="${done}"></div>
     </div>`
   } else if (done) {
     return `<div class="progress m-b-20">
