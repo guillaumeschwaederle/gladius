@@ -13,7 +13,7 @@
       <%= render 'shared/card_training' %>
       <% @trainings.order('updated_at desc').each do |training| %>
         <div class="col-sm-4 col-12 ">
-          <div class="card m-b-20 ">
+          <div class="card m-b-20 card_training" data-id="<%= training.id %>" data-name="<%= training.name %>">
             <div class="card-header">
                 <h3><%= training.name %></h3>
             </div>
@@ -72,6 +72,7 @@
       $('.circliful-chart').circliful();
     });
   <% end %>
+  <%= javascript_pack_tag 'index_trainings' %>
 <% end %>
 
 
