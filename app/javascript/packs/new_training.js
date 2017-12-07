@@ -1,7 +1,7 @@
 
 
 const newSerie = (text) => {
-    return `<div class= "card-exercice-new-serie">
+    return `<div class= "card-exercice-new-serie" data-name= "${text}">
         <div class="form-group">
             <label class="control-label">${text}</label>
             <div class="input-group bootstrap-touchspin">
@@ -43,13 +43,20 @@ const newSerie = (text) => {
                     <span class="input-group-addon bootstrap-touchspin-postfix"
                         style="display: none;"></span>
                     <span class="input-group-btn">
-                    <button class="btn btn-primary bootstrap-touchspin-up"
+                    <button class="btn btn-primary bootstrap-touchspin-up card-plus"
                         type="button">+</button>
                 </span>
             </div>
         </div>
     </div>
 `}
+function btnsChecker() {
+    const cardChoixReps = document.querySelectorAll('.card-plus');
+    const lastCard = cardChoixReps[cardChoixReps.length - 1]
+    lastCard.addEventListener("click", (event) => {
+            console.log("jai cliqué sur le +");
+        });
+}
 
 const cards = document.querySelectorAll('.card');
 
@@ -57,5 +64,8 @@ cards.forEach((card) => {
     card.addEventListener("click", (event) => {
         const dataNameCurrentCard = event.currentTarget.attributes["data-name"].value
         document.getElementById('newserie').insertAdjacentHTML('beforeend', newSerie(dataNameCurrentCard));
+        btnsChecker();        
     });
 });
+
+
