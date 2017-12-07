@@ -5,15 +5,60 @@
       <%= render "shared/card_stat" %>
       <%= render "shared/card_stat" %>
     </div>
+    <hr>
     <div class="text-right">
-      <%= link_to "Créer votre programme", new_training_path, class: "btn btn-primary" %>
+      <%= link_to "Créer votre programme", new_training_path, class: "btn btn-primary btn_new" %>
     </div>
-    <div class="container">
-
+    <div class="row list_training">
+      <%= render 'shared/card_training' %>
+      <% @trainings.order('updated_at desc').each do |training| %>
+        <div class="col-sm-4 col-12 ">
+          <div class="card m-b-20 ">
+            <div class="card-header">
+                <h3><%= training.name %></h3>
+            </div>
+            <div class="card-body card_relative">
+                <% average_arr = [] %>
+                <% training.series.each do |serie| %>
+                  <% if serie.done.nil? %>
+                    <% completion = 0 %>
+                  <% else %>
+                    <% completion = serie.done / serie.goal.to_f unless serie.done.nil? %>
+                  <% end %>
+                  <% average_arr << completion %>
+                <% end %>
+                <% unless average_arr == [] %>
+                  <% a = average_arr.sum / average_arr.size * 100 %>
+                <% else %>
+                  <% a = 0 %>
+                <% end %>
+                <p class="card_completion"><%= a %> %</p>
+                <% if a == 0 %>
+                  <%= button_tag type: 'submit', class: "btn btn-danger card_icone" do %>
+                     ✖
+                  <% end %>
+                <% else %>
+                  <%= button_tag type: 'submit', class: "btn btn-success card_icone" do %>
+                     ✔
+                  <% end %>
+                <% end %>
+                <blockquote class="card-bodyquote align-bottom">
+                  <% if a != 0 && training.updated_at != training.created_at %>
+                    <p><%= training.updated_at.strftime("Modifié le %d/%m/%Y") %></p>
+                  <% elsif training.created_at == training.updated_at %>
+                    <p><%= training.created_at.strftime("Crée le %d/%m/%Y") %></p>
+                  <% else %>
+                    <p>Validé le <%= training.updated_at("Validé le %d/%m/%Y") %></p>
+                  <% end %>
+                </blockquote>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="right_section">
-
+  frites
   </div>
 </div>
 

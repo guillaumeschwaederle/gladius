@@ -8,15 +8,17 @@
 puts "-" * 50
 puts "SEEDING GLADIUS STARTING"
 
-User.destroy_all
-Profile.destroy_all
-Training.destroy_all
 Serie.destroy_all
 Exercice.destroy_all
+Training.destroy_all
+Profile.destroy_all
+User.destroy_all
 
 require 'open-uri'
 require 'nokogiri'
 require 'faker'
+
+# Seeds des Exercices
 
 categories = ["abdominaux", "pectoraux", "dos", "epaules", "biceps", "triceps", "avant-bras", "cuisses-fessiers", "mollets"]
 
@@ -57,18 +59,20 @@ p categories.size
 puts "__________________"
 
 
+
+# Seeds des Users
+
 puts "Creating Users..."
 user = User.create!(
     email: "user@gmail.com",
     password: "123456"
 )
 
-profile = Profile.new(
+profile = Profile.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     user: user
 )
-profile.save!
 
 n = 1
 users = []
@@ -107,16 +111,103 @@ puts "__________________"
 puts "SEED ENDED"
 puts "-" * 50
 
-puts "                ````````                                                                            
-            `-oydNMMMMNdy:                                                                          
-          -smMMMMNN NMMMm-                                                                          
-        `oNMM dho d ::/o-                                                                           
-        oMMmyy mshs:-.`    .-`          `-.       `-----.`      .-`   `-.     .-`    `.---.`        
-        m m h enculé!!/    hN.         `hmN/      :Ndyyyhhy:    oM/   -My     yM-   :ddyyhho        
-        NMoy hM/`    .`    dM.        `hN-yN:     /Ms   `.yN/   oM/   -My     yM:   sMh:.`.`        
-        sMo``NN`   :hhy    dM.       `yN/..dN:    /Ms     -Mh   oM/   -My     yM-   `/syhdh/        
-        .Nd  +Nh:.`.:mm    dM.      `sNdyyyhmm-   /Ms   `:dN:   oM/   `mm-` `-mN.  `+:.``:NN.       
-         my   .oyhhhys/    hNdhhhs  +m+`````.dd.  :Nmhhhhyo.    oN/    -shdhdhs-   `oyddddh/        
-       `/y`     `````      ```````  ``       ```  ````````      ```      `````       ``````         
-        `                                                                                           
+
+
+############# Seeds Training + séries
+
+# Training done
+rep = 1
+puts "Start Training done creation"
+10.times do
+  t = Training.create!(
+    name: "Programme fait#{rep}",
+    profile: Profile.first
+  )
+  srep = Exercice.first
+  puts "Start Serie creation"
+  5.times do
+    series_done = Serie.create!(
+      goal: 100,
+      done: 90,
+      exercice: srep,
+      training: t
+    )
+  end
+  puts "End Serie creation"
+  rep += 1
+end
+puts "End Training done creation"
+
+
+# Training midlle (done & not done)
+
+rep = 1
+puts "Start Training creation"
+10.times do
+  t = Training.create!(
+    name: "Programme middle #{rep}",
+    profile: Profile.first
+  )
+  srep = Exercice.first
+  puts "Start Serie creation"
+  5.times do
+    series_done = Serie.create!(
+      goal: 100,
+      done: 90,
+      exercice: srep,
+      training: t
+    )
+    series_not_done = Serie.create!(
+      goal: 100,
+      exercice: srep,
+      training: t
+    )
+  end
+  puts "End Serie creation"
+  rep += 1
+end
+puts "End Training middle creation"
+
+
+# Training not done
+
+rep = 1
+puts "Start Training creation"
+10.times do
+  t = Training.create!(
+    name: "Programme pas fait #{rep}",
+    profile: Profile.first
+  )
+  srep = Exercice.first
+  puts "Start Serie creation"
+  5.times do
+    series_not_done = Serie.create!(
+      goal: 100,
+      exercice: srep,
+      training: t
+    )
+  end
+  puts "End Serie creation"
+  rep += 1
+end
+puts "End Training not done creation"
+
+
+
+
+
+# Decoration Seeds
+
+puts "                ````````
+            `-oydNMMMMNdy:
+          -smMMMMNN NMMMm-
+        `oNMM dho d ::/o-
+        oMMmyy mshs:-.`    .-`          `-.       `-----.`      .-`   `-.     .-`    `.---.`
+        m m h enculé!!/    hN.         `hmN/      :Ndyyyhhy:    oM/   -My     yM-   :ddyyhho
+        NMoy hM/`    .`    dM.        `hN-yN:     /Ms   `.yN/   oM/   -My     yM:   sMh:.`.`
+        sMo``NN`   :hhy    dM.       `yN/..dN:    /Ms     -Mh   oM/   -My     yM-   `/syhdh/
+        .Nd  +Nh:.`.:mm    dM.      `sNdyyyhmm-   /Ms   `:dN:   oM/   `mm-` `-mN.  `+:.``:NN.
+         my   .oyhhhys/    hNdhhhs  +m+`````.dd.  :Nmhhhhyo.    oN/    -shdhdhs-   `oyddddh/
+       `/y`     `````      ```````  ``       ```  ````````      ```      `````       ``````
+        `
 "
