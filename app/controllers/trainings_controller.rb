@@ -7,6 +7,7 @@ class TrainingsController < ApplicationController
 
   def new
     @training = Training.new
+    @serie = Serie.new
   end
 
   def create
