@@ -33,6 +33,9 @@ gem 'jquery-rails'
 
 gem 'omniauth-facebook'
 
+#JS data
+gem 'gon'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
