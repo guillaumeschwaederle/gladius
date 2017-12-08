@@ -1,7 +1,6 @@
-
-
-const newSerie = (text) => {
+const newSerie = (text, x) => {
     return `<div class= "card-exercice-new-serie" data-name= "${text}">
+        <input type="hidden" value="${text}" name="serie${x}[exercice_name]">
         <div class="form-group">
             <label class="control-label">${text}</label>
             <div class="input-group bootstrap-touchspin">
@@ -11,7 +10,7 @@ const newSerie = (text) => {
                     <input id="demo0"
                     type="text"
                     value="10"
-                    name="demo0"
+                    name="serie${x}[goal]"
                     data-bts-min="0"
                     data-bts-max="100"
                     min="0"
@@ -32,7 +31,7 @@ const newSerie = (text) => {
                     data-bts-mousewheel="true"
                     data-bts-button-down-class="btn btn-default"
                     data-bts-button-up-class="btn btn-default"
-                            class="form-control" 
+                            class="form-control"
                             style="display: block;"
                             title="overall type: UNKNOWN_TYPE
                                 server type: NO_SERVER_DATA
@@ -57,13 +56,15 @@ const newSerie = (text) => {
 // for each parse selectioner le dernier
 
 const cards = document.querySelectorAll('.card');
+let x = 0
 
 cards.forEach((card) => {
     card.addEventListener("click", (event) => {
         const dataNameCurrentCard = event.currentTarget.attributes["data-name"].value
-        document.getElementById('newserie').insertAdjacentHTML('beforeend', newSerie(dataNameCurrentCard));
+        document.getElementById('formul').insertAdjacentHTML('beforeend', newSerie(dataNameCurrentCard, x));
         increment_on_plus();
         increment_on_moins();
+        x += 1;
     });
 });
 
@@ -90,7 +91,7 @@ function increment_on_moins() {
             console.log(reps);
             if (reps < 0) {
                 reps = 0;
-            } 
+            }
             assignement = cardChoixRep.parentNode.parentNode.querySelector('input');
             assignement.value = reps;
             console.log("jai cliqué sur ce moins +");

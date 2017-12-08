@@ -15,21 +15,24 @@
 </form>
 
    <div class="row list_training">
-      <%= render "index_exercices" %>
+      <%= render "index_exercices"%>
    </div>
 </div>
 
 
-<div class="right_section"> 
-   <div class="container">
-        <div class="card-box">
-                <div id="newserie">
-                        <%= render "new_serie_name" %>
-                    <div>
-                </div>
-            </div>
-        <button type="submit" class="btn btn-outline-primary btn-block btn-lg waves-effect waves-light">Créer mon programme</button>
+<div class="right_section">
+  <div class="container">
+    <%= simple_form_for(Training.new, method: :post, class: 'right_section') do |form| %>
+      <div class="card-box">
+        <div id="newserie">
+          <%= render "new_serie_name" %>
+        <div>
+      </div>
+      <%= form.submit "Créer mon Programme", class: "btn btn-outline-primary btn-block btn-lg waves-effect waves-light" %>
+    <% end %>
+  </div>
 </div>
+
 
 <% content_for(:after_js) do %>
     <% javascript_pack_tag 'new_training'%>

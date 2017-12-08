@@ -26,8 +26,13 @@ class TrainingsController < ApplicationController
 
   def create
     @training = Training.new(training_params)
+    @arr_series = params.keys.each_with_object([]) { |key, a| a << params[key] if key.match(/serie\d+/) }
     if @training.save
-      redirect_to trainings_path
+      @arr_series.each do |serie|
+        e = Exercice.find_by_name(serie[:exercice_name])
+        s = Serie.create(goal: serie[:goal], exercice: e, training: @training)
+        p s.errors
+      end
     else
       render :new
     end
