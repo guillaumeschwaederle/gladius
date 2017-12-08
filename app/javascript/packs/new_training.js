@@ -55,14 +55,16 @@ const newSerie = (text) => {
 // for each parse selectioner le dernier
 
 function increment_on_plus() {
-    const cardChoixReps = document.querySelector('.card-plus');
+    const cardChoixReps = document.querySelectorAll('.card-plus');
     cardChoixReps.forEach((cardChoixRep) => {
         cardChoixRep.addEventListener("click", (event) => {
-                reps = cardChoixRep.parentNode.parentNode.querySelector('input').value;
-                reps = reps + 1;
-                assignement = cardChoixRep.parentNode.parentNode.querySelector('input');
-                assignement.value = reps;
-            });
+            reps = parseInt(cardChoixRep.parentNode.parentNode.querySelector('input').value, 10);
+            reps = reps + 1;
+            console.log(reps);
+            assignement = cardChoixRep.parentNode.parentNode.querySelector('input');
+            assignement.value = reps;
+            console.log("jai cliqué sur ce plus +");
+        });
     });
 }
 
