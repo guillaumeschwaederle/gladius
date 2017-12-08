@@ -114,24 +114,27 @@ puts "-" * 50
 
 
 ############# Seeds Training + séries
-
+e = Exercice.first(5)
+p e
 # Training done
 rep = 1
 puts "Start Training done creation"
-10.times do
+5.times do
   t = Training.create!(
     name: "Programme fait#{rep}",
     profile: Profile.first
   )
-  srep = Exercice.first
+  srep = 0
   puts "Start Serie creation"
   5.times do
     series_done = Serie.create!(
       goal: 100,
-      done: 90,
-      exercice: srep,
+      exercice: e[srep],
       training: t
     )
+    series_done.done = 90
+    series_done.save!
+    srep += 1
   end
   puts "End Serie creation"
   rep += 1
@@ -143,25 +146,27 @@ puts "End Training done creation"
 
 rep = 1
 puts "Start Training creation"
-10.times do
+5.times do
   t = Training.create!(
     name: "Programme middle #{rep}",
     profile: Profile.first
   )
-  srep = Exercice.first
+  srep = 0
   puts "Start Serie creation"
   5.times do
     series_done = Serie.create!(
       goal: 100,
-      done: 90,
-      exercice: srep,
+      exercice: e[srep],
       training: t
     )
     series_not_done = Serie.create!(
       goal: 100,
-      exercice: srep,
+      exercice: e[srep],
       training: t
     )
+    series_done.done = 90
+    series_done.save!
+    srep += 1
   end
   puts "End Serie creation"
   rep += 1
@@ -169,23 +174,52 @@ end
 puts "End Training middle creation"
 
 
+
+# Training midlle (done & not done)
+
+rep = 1
+puts "Start Training Top creation"
+5.times do
+  t = Training.create!(
+    name: "Programme Top #{rep}",
+    profile: Profile.first
+  )
+  srep = 0
+  puts "Start Serie creation"
+  5.times do
+    series_done = Serie.create!(
+      goal: 100,
+      exercice: e[srep],
+      training: t
+    )
+    series_done.done = 120
+    series_done.save!
+    srep += 1
+  end
+  puts "End Serie creation"
+  rep += 1
+end
+puts "End Training TOP creation"
+
+
 # Training not done
 
 rep = 1
 puts "Start Training creation"
-10.times do
+5.times do
   t = Training.create!(
     name: "Programme pas fait #{rep}",
     profile: Profile.first
   )
-  srep = Exercice.first
+  srep = 0
   puts "Start Serie creation"
   5.times do
-    series_not_done = Serie.create!(
+    series_done = Serie.create!(
       goal: 100,
-      exercice: srep,
+      exercice: e[srep],
       training: t
     )
+    srep += 1
   end
   puts "End Serie creation"
   rep += 1
