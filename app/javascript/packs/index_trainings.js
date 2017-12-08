@@ -37,7 +37,7 @@ const createTitle =(text) => {
   right_section.innerHTML = title_training(text);
 };
 
-createTitle("Cliquez sur un programme");
+createTitle("Sélectionnez un programme");
 
 // const series_for_training = (training_id) => {
 //   series_training[training_id]
