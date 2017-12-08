@@ -56,6 +56,17 @@ const newSerie = (text) => {
 
 // for each parse selectioner le dernier
 
+const cards = document.querySelectorAll('.card');
+
+cards.forEach((card) => {
+    card.addEventListener("click", (event) => {
+        const dataNameCurrentCard = event.currentTarget.attributes["data-name"].value
+        document.getElementById('newserie').insertAdjacentHTML('beforeend', newSerie(dataNameCurrentCard));
+        increment_on_plus();
+        increment_on_moins();
+    });
+});
+
 function increment_on_plus() {
     const cardChoixReps = document.querySelectorAll('.card-plus');
     cardChoixReps.forEach((cardChoixRep) => {
@@ -88,17 +99,5 @@ function increment_on_moins() {
 }
 
 
-
-const cards = document.querySelectorAll('.card');
-
-cards.forEach((card) => {
-    card.addEventListener("click", (event) => {
-        const dataNameCurrentCard = event.currentTarget.attributes["data-name"].value
-        document.getElementById('newserie').insertAdjacentHTML('beforeend', newSerie(dataNameCurrentCard));
-        
-        increment_on_plus();
-        increment_on_moins();
-    });
-});
 
 
