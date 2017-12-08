@@ -32,7 +32,7 @@ const newSerie = (text) => {
                     data-bts-mousewheel="true"
                     data-bts-button-down-class="btn btn-default"
                     data-bts-button-up-class="btn btn-default"
-                            class="form-control" 
+                            class="form-control"
                             style="display: block;"
                             title="overall type: UNKNOWN_TYPE
                                 server type: NO_SERVER_DATA
@@ -69,35 +69,29 @@ cards.forEach((card) => {
 
 function increment_on_plus() {
     const cardChoixReps = document.querySelectorAll('.card-plus');
-    cardChoixReps.forEach((cardChoixRep) => {
-        cardChoixRep.addEventListener("click", (event) => {
-            reps = parseInt(cardChoixRep.parentNode.parentNode.querySelector('input').value, 10);
-            reps = reps + 1;
-            assignement = cardChoixRep.parentNode.parentNode.querySelector('input');
-            assignement.value = reps;
-            console.log("jai cliqué sur ce plus +");
-        });
+    const cardChoixRep = cardChoixReps[cardChoixReps.length - 1];
+    cardChoixRep.addEventListener("click", (event) => {
+        reps = parseInt(cardChoixRep.parentNode.parentNode.querySelector('input').value, 10);
+        reps = reps + 1;
+        assignement = cardChoixRep.parentNode.parentNode.querySelector('input');
+        assignement.value = reps;
+        console.log("jai cliqué sur ce plus +");
     });
 }
 
 function increment_on_moins() {
     const cardChoixReps = document.querySelectorAll('.card-moins');
-    cardChoixReps.forEach((cardChoixRep) => {
-        cardChoixRep.addEventListener("click", (event) => {
-            reps = parseInt(cardChoixRep.parentNode.parentNode.querySelector('input').value, 10);
-            reps = reps - 1;
-            console.log(reps);
-            console.log(reps);
-            if (reps < 0) {
-                reps = 0;
-            } 
-            assignement = cardChoixRep.parentNode.parentNode.querySelector('input');
-            assignement.value = reps;
-            console.log("jai cliqué sur ce moins +");
-        });
+    const cardChoixRep = cardChoixReps[cardChoixReps.length - 1];
+    cardChoixRep.addEventListener("click", (event) => {
+        reps = parseInt(cardChoixRep.parentNode.parentNode.querySelector('input').value, 10);
+        reps = reps - 1;
+        console.log(reps);
+        console.log(reps);
+        if (reps < 0) {
+            reps = 0;
+        }
+        assignement = cardChoixRep.parentNode.parentNode.querySelector('input');
+        assignement.value = reps;
+        console.log("jai cliqué sur ce moins +");
     });
 }
-
-
-
-
