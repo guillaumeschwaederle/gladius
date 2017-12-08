@@ -10,7 +10,7 @@ const newSerie = (text) => {
                     <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
                     <input id="demo0" 
                         type="text"
-                        value="70"
+                        value="10"
                         name="demo0"
                         data-bts-min="0"
                         data-bts-max="100"
@@ -43,19 +43,35 @@ const newSerie = (text) => {
                     <span class="input-group-addon bootstrap-touchspin-postfix"
                         style="display: none;"></span>
                     <span class="input-group-btn">
-                    <button class="btn btn-primary bootstrap-touchspin-up card-plus"
+                    <button class="btn btn-primary bootstrap-touchspin-up card-plus "
                         type="button">+</button>
                 </span>
             </div>
         </div>
     </div>
 `}
-function btnsChecker() {
+// document.querySelector('.card-plus').parentNode.parentNode.querySelector('input').value
+
+// for each parse selectioner le dernier
+
+function increment_on_plus() {
+    const cardChoixReps = document.querySelector('.card-plus');
+    cardChoixReps.forEach((cardChoixRep) => {
+        cardChoixRep.addEventListener("click", (event) => {
+                reps = cardChoixRep.parentNode.parentNode.querySelector('input').value;
+                reps = reps + 1;
+                assignement = cardChoixRep.parentNode.parentNode.querySelector('input');
+                assignement.value = reps;
+            });
+    });
+}
+
+function click_on_plus() {
     const cardChoixReps = document.querySelectorAll('.card-plus');
     const lastCard = cardChoixReps[cardChoixReps.length - 1]
     lastCard.addEventListener("click", (event) => {
-            console.log("jai cliqué sur le +");
-        });
+        console.log("jai cliqué sur le +");
+    });
 }
 
 const cards = document.querySelectorAll('.card');
@@ -64,8 +80,17 @@ cards.forEach((card) => {
     card.addEventListener("click", (event) => {
         const dataNameCurrentCard = event.currentTarget.attributes["data-name"].value
         document.getElementById('newserie').insertAdjacentHTML('beforeend', newSerie(dataNameCurrentCard));
-        btnsChecker();        
+        click_on_plus();
+        increment_on_plus();
     });
 });
 
+
+// function click_on_plus() {
+//     const cardChoixReps = document.querySelectorAll('.card-plus');
+//     const lastCard = cardChoixReps[cardChoixReps.length - 1]
+//     lastCard.addEventListener("click", (event) => {
+//         console.log("jai cliqué sur le +");
+//     });
+// }
 

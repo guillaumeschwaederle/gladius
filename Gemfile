@@ -14,8 +14,6 @@ gem 'puma'
 gem 'rails', '5.1.4'
 gem 'redis'
 
-
-
 #Active-admin
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
