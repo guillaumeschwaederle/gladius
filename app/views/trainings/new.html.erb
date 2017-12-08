@@ -14,13 +14,18 @@
     <% end %>
 </form>
 
+  <% if @exercices.present? %>
+    <%= render "index_exercices" %>
+  <% else %>
+    <p>Désolés, mais il n'existe pas d'exercices s'appelant "<%= params[:search] %>". Merci d'effectuer une nouvelle recherche.</p>
+  <% end %>
+
    <div class="row list_training">
       <%= render "index_exercices" %>
    </div>
 </div>
 
-
-<div class="right_section"> 
+<div class="right_section">
    <div class="container">
         <div class="card-box">
                 <div id="newserie">
