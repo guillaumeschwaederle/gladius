@@ -5,9 +5,14 @@ class TrainingsController < ApplicationController
     @trainings = Training.all
   end
 
+
   def new
     @training = Training.new
     @serie = Serie.new
+    @exercices = Exercice.all
+    if params[:search] && params[:search] != ""
+      @exercices = Exercice.search(params[:search])
+    end
   end
 
   def create
