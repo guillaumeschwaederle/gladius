@@ -6,3 +6,16 @@
   height: 120px;
   width: 120px;
 }
+
+.profile_photo {
+    padding: 40px 40px;
+    background-color: #F9CD45;
+    opacity: 0.3;
+    color: white;
+    letter-spacing: 5px;
+}
+
+.profile_photo:hover {
+
+    opacity: 0.9;
+}

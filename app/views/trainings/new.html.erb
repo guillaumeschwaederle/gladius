@@ -3,7 +3,10 @@
 <div class="left_section">
 
    <h1 class="title-left-layout text-center">Ajouter un exercice à mon programme</h1>
-<form class="form-inline">
+
+   <div class="row list_training">
+    <div class="search-bar">
+   <form class="form-inline">
     <div class="form-group m-r-10">
         <%= form_tag(new_training_path, :method => "get", id: "exampleInputEmail2") do %>
         <%= text_field_tag :search, params[:search], placeholder: "Ex: Pompes", class: "form-control" %>
@@ -13,8 +16,8 @@
     </button>
     <% end %>
 </form>
+    </div>
 
-   <div class="row list_training">
       <%= render "index_exercices" %>
    </div>
 </div>
