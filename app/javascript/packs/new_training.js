@@ -76,7 +76,6 @@ function increment_on_plus() {
         reps = reps + 1;
         assignement = cardChoixRep.parentNode.parentNode.querySelector('input');
         assignement.value = reps;
-        console.log("jai cliqué sur ce plus +");
     });
 }
 
@@ -92,6 +91,5 @@ function increment_on_moins() {
         }
         assignement = cardChoixRep.parentNode.parentNode.querySelector('input');
         assignement.value = reps;
-        console.log("jai cliqué sur ce moins +");
     });
 }
