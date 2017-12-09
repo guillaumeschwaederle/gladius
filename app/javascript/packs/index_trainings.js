@@ -39,10 +39,6 @@ const createTitle =(text) => {
 
 createTitle("Sélectionnez un programme");
 
-// const series_for_training = (training_id) => {
-//   series_training[training_id]
-// };
-
 trainings.forEach(function(training) {
 
   training.addEventListener('click', (event) => {
@@ -51,20 +47,18 @@ trainings.forEach(function(training) {
     const prog = document.querySelector(`[data-id="${id}"]`);
     const name = prog.attributes["data-name"].value
     createTitle(name);
-
+    console.log(exercices)
+    console.log(series_training[id])
     // Je veux sélectionner les séries du programme que j'ai sélectionné
     series_training[id].forEach(function(serie) {
     // Faire un each sur chaque
       // Ajouter la Card
         // avec les bonnes valeurs
         // et si possible
-      right_section.insertAdjacentHTML('beforeEnd', card(exercices[serie['exercice_id']]['name'], progress(serie['goal'], serie['done'])));
+      console.log('frites')
+      right_section.insertAdjacentHTML('beforeEnd', card(exercices[serie['exercice_id']]["name"], progress(serie['goal'], serie['done'])));
     });
-
-
     // Recupérer les infos pour les crées
-
-
   });
 });
 
