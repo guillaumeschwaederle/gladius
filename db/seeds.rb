@@ -26,7 +26,10 @@ names = []
 descriptions = []
 
 puts "Creating Exercises..."
+
 categories.each do |category|
+  names = []
+  descriptions = [] 
     name = ""
     description = ""
 
@@ -51,7 +54,7 @@ puts "Exercice Created !"
 puts "__________________"
 
 puts "Number of exercice created "
-p names.size
+p Exercice.all.count
 puts "Number of description : "
 p descriptions.size
 puts "Number of category : "
