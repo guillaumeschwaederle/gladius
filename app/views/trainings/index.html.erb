@@ -54,15 +54,16 @@
    <div class="right_section">
    </div>
 </div>
+
 <% content_for(:after_js) do %>
-<%= javascript_tag do %>
-$( document ).ready(function() {
-$('.counter').counterUp({
-delay: 100,
-time: 1200
-});
-$('.circliful-chart').circliful();
-});
-<% end %>
-<%= javascript_pack_tag 'index_trainings' %>
+  <%= javascript_tag do %>
+    $( document ).ready(function() {
+    $('.counter').counterUp({
+      delay: 100,
+      time: 1200
+    });
+    $('.circliful-chart').circliful();
+    });
+  <% end %>
+  <%= javascript_pack_tag 'index_trainings' %>
 <% end %>

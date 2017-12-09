@@ -80,16 +80,16 @@ function increment_on_plus() {
 }
 
 function increment_on_moins() {
+    const cardChoixReps = document.querySelectorAll('.card-moins');
     const cardChoixRep = cardChoixReps[cardChoixReps.length - 1];
     cardChoixRep.addEventListener("click", (event) => {
         reps = parseInt(cardChoixRep.parentNode.parentNode.querySelector('input').value, 10);
         reps = reps - 1;
-        console.log(reps);
-        console.log(reps);
         if (reps < 0) {
             reps = 0;
         }
         assignement = cardChoixRep.parentNode.parentNode.querySelector('input');
         assignement.value = reps;
+        console.log(assignement.value);
     });
 }

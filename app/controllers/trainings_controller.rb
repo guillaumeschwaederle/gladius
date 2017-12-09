@@ -9,7 +9,7 @@ class TrainingsController < ApplicationController
     gon.series_training = @series_training
     gon.series_exercice = @series_exercice
     gon.exercices = @exercices
-    @ratio_total = ratio(@trainings)
+    @ratio_total = ratio(@trainings).round(2)
     @completion_total = completion(@trainings)
     @total = number(@trainings)
   end
