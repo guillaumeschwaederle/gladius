@@ -3,20 +3,20 @@
 <div class="left_section">
 
    <h1 class="title-left-layout text-center">Ajouter un exercice à mon programme</h1>
-
    <div class="row list_training">
     <div class="search-bar">
-   <form class="form-inline">
-    <div class="form-group m-r-10">
-        <%= form_tag(new_training_path, :method => "get", id: "exampleInputEmail2") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Ex: Pompes", class: "form-control" %>
-    </div>
-    <button type="submit" class="btn btn-outline-success waves-effect waves-light btn-md">
-        Rechercher
-    </button>
-    <% end %>
-</form>
-    </div>
+    <form class="form-inline">
+        <div class="form-group m-r-10">
+            <%= form_tag(new_training_path, :method => "get", id: "exampleInputEmail2") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Ex: Pompes", class: "form-control searchbar-gladius" %>
+        </div>
+        <button type="submit" class="btn btn-outline-success waves-effect waves-light btn-md">
+            Rechercher
+        </button>
+        <% end %>
+    </form>
+</div>
+</div>
 
   <% if @exercices.present? %>
     <%= render "index_exercices" %>
@@ -25,7 +25,6 @@
   <% end %>
 
    <div class="row list_training">
-
       <%= render "index_exercices" %>
    </div>
 </div>
@@ -39,6 +38,7 @@
                 </div>
             </div>
         <button type="submit" class="btn btn-outline-primary btn-block btn-lg waves-effect waves-light">Créer mon programme</button>
+    </div>
 </div>
 
 <% content_for(:after_js) do %>

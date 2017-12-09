@@ -9,13 +9,14 @@
 
 .profile_photo {
     padding: 40px 40px;
-    background-color: #F9CD45;
-    opacity: 0.3;
+    background-color: #3C4752;
+    opacity: 0.9;
     color: white;
-    letter-spacing: 5px;
+    letter-spacing: 2px;
+    border: 1px solid white;
 }
 
 .profile_photo:hover {
 
-    opacity: 0.9;
+    background-color: #45505A;
 }
