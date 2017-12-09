@@ -49,8 +49,8 @@
                             <h6>Page not found</h6>
                             <div class="buttons-con">
                                 <div class="action-link-wrap">
-                                    <a onclick="history.back(-1)" href="" class="btn btn-outline-success">Go Back</a>
-                                    <a href="" class="btn btn-outline-success">Go to Home Page</a>
+                                  <%= link_to "Back", :back , class:"btn btn-outline-success"%>
+                                  <%= link_to "Revenir à la page d'accueil", trainings_path, class:"btn btn-outline-success" %>
                                 </div>
                             </div>
                         </div>
