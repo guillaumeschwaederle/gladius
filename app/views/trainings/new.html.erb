@@ -1,39 +1,37 @@
 <div class="content">
 
-<div class="left_section">
-
-   <h1 class="title-left-layout text-center">Ajouter un exercice à mon programme</h1>
-
-   <div class="row list_training">
-    <div class="search-bar">
-   <form class="form-inline">
-    <div class="form-group m-r-10">
-        <%= form_tag(new_training_path, :method => "get", id: "exampleInputEmail2") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Ex: Pompes", class: "form-control" %>
-    </div>
-    <button type="submit" class="btn btn-outline-success waves-effect waves-light btn-md">
-        Rechercher
-    </button>
-    <% end %>
-</form>
-   </div>
-   <div class="row list_training">
-      <%= render "index_exercices"%>
-   </div>
-</div>
-
-
-<div class="right_section">
-  <div class="container">
-    <%= simple_form_for(Training.new, method: :post, class: 'right_section') do |form| %>
-      <div class="card-box">
-        <div id="newserie">
-          <%= render "new_serie_name" %>
-        <div>
+  <div class="left_section">
+    <h1 class="title-left-layout text-center">Ajouter un exercice à mon programme</h1>
+    <div class="row list_training">
+      <div class="search-bar">
+        <form class="form-inline">
+          <div class="form-group m-r-10">
+            <%= form_tag(new_training_path, :method => "get", id: "exampleInputEmail2") do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Ex: Pompes", class: "form-control" %>
+              <button type="submit" class="btn btn-outline-success waves-effect waves-light btn-md">Rechercher</button>
+            <% end %>
+          </div>
+        </form>
       </div>
-      <%= form.submit "Créer mon Programme", class: "btn btn-outline-primary btn-block btn-lg waves-effect waves-light" %>
-    <% end %>
+      <div class="row list_training">
+        <%= render "index_exercices"%>
+      </div>
+    </div>
   </div>
+
+  <div class="right_section">
+    <div class="container">
+      <%= simple_form_for(Training.new, method: :post, class: 'right_section') do |form| %>
+        <div class="card-box margin_box">
+          <div id="newserie">
+            <%= render "new_serie_name" %>
+          </div>
+        </div>
+        <%= form.submit "Créer mon Programme", class: "btn btn-outline-primary btn-block btn-lg waves-effect waves-light" %>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 
 

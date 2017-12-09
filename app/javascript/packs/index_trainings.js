@@ -52,9 +52,6 @@ trainings.forEach(function(training) {
     const name = prog.attributes["data-name"].value
     createTitle(name);
 
-    console.log(series_training[id]);
-    console.log(exercices);
-
     // Je veux sélectionner les séries du programme que j'ai sélectionné
     series_training[id].forEach(function(serie) {
     // Faire un each sur chaque
