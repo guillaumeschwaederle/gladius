@@ -1,7 +1,6 @@
-
-
-const newSerie = (text) => {
+const newSerie = (text, x) => {
     return `<div class= "card-exercice-new-serie" data-name= "${text}">
+        <input type="hidden" value="${text}" name="serie${x}[exercice_name]">
         <div class="form-group">
             <label class="control-label">${text}</label>
             <div class="input-group bootstrap-touchspin">
@@ -11,7 +10,7 @@ const newSerie = (text) => {
                     <input id="demo0"
                     type="text"
                     value="10"
-                    name="demo0"
+                    name="serie${x}[goal]"
                     data-bts-min="0"
                     data-bts-max="100"
                     min="0"
@@ -57,13 +56,15 @@ const newSerie = (text) => {
 // for each parse selectioner le dernier
 
 const cards = document.querySelectorAll('.card');
+let x = 0
 
 cards.forEach((card) => {
     card.addEventListener("click", (event) => {
         const dataNameCurrentCard = event.currentTarget.attributes["data-name"].value
-        document.getElementById('newserie').insertAdjacentHTML('beforeend', newSerie(dataNameCurrentCard));
+        document.getElementById('formul').insertAdjacentHTML('beforeend', newSerie(dataNameCurrentCard, x));
         increment_on_plus();
         increment_on_moins();
+        x += 1;
     });
 });
 
@@ -80,7 +81,6 @@ function increment_on_plus() {
 }
 
 function increment_on_moins() {
-    const cardChoixReps = document.querySelectorAll('.card-moins');
     const cardChoixRep = cardChoixReps[cardChoixReps.length - 1];
     cardChoixRep.addEventListener("click", (event) => {
         reps = parseInt(cardChoixRep.parentNode.parentNode.querySelector('input').value, 10);

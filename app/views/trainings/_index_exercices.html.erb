@@ -4,11 +4,10 @@
 <div class="container">
   <div class="row">
   </div>
-
-<% @categories.each do |cat| %>
-  <div class= "title-left-layout underline-title">
-    <h2><%= cat.capitalize %></h2>
-  </div>
+  <% @categories.each do |cat| %>
+    <div class= "title-left-layout underline-title">
+      <h2><%= cat.capitalize %></h2>
+    </div>
     <div class="row">
       <% @exercices.where(category: cat).each do |exercice| %>
         <div class="col-sm-4">
@@ -24,7 +23,5 @@
         </div>
       <% end %>
     </div>
-<% end %>
-
-
+  <% end %>
 </div>
