@@ -1,14 +1,15 @@
 <div class="col-sm-4 col-xs-12">
-    <div class="card m-b-20 ">
-        <div class="card-header">
-            <h3>Ajoutez un programme</h3>
+        <div class="card m-b-20 new-training-card">
+            <div class="card-header">
+                
+            </div>
+            <div class="card-body card_relative">
+                <blockquote class="card-bodyquote">
+                </blockquote>
+                <%= link_to new_training_path, class: "card_icone" do %>
+                <button class="btn btn-outline-primary btn-block btn-lg">Ajoutez un programme</button>
+                <% end %>
+            </div>
         </div>
-        <div class="card-body card_relative">
-            <blockquote class="card-bodyquote">
-            </blockquote>
-            <%= link_to new_training_path, class: "card_icone" do %>
-              <button class="btn btn-primary">Cliquez ici</button>
-            <% end %>
-        </div>
-    </div>
+
 </div>

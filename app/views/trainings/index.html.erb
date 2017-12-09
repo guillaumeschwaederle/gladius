@@ -1,77 +1,68 @@
 <div class="content">
-  <div class="left_section">
-    <div class="row">
-      <%= render "shared/card_stat", valeur_1: @trainings.select { |a| a.completion > 0 }.size, data_name: "Programmes réalisés", data_text: "#{@ratio_total}%", data_percent: @ratio_total %>
-      <%= render "shared/card_stat", valeur_1: @completion_total, data_name: "Complétion des programmes", data_text: "#{@completion_total}%", data_percent: @completion_total %>
-      <%= render "shared/card_stat", valeur_1: @total[:done], data_name: "Répétitions d'exercices réalisés", data_text: "#{@total[:done]/@total[:goal].to_f * 100}%", data_percent: @total[:done] / @total[:goal].to_f * 100 %>
-    </div>
-    <hr>
-    <div class="text-right">
-      <%= link_to "Créer votre programme", new_training_path, class: "btn btn-primary btn_new" %>
-    </div>
-    <div class="row list_training">
-      <%= render 'shared/card_training' %>
-      <% @trainings.order('updated_at desc').each do |training| %>
-        <div class="col-sm-4 col-12 ">
-          <div class="card m-b-20 card_training" data-id="<%= training.id %>" data-name="<%= training.name %>">
-            <div class="card-header">
-                <h3><%= training.name %></h3>
-            </div>
-            <div class="card-body card_relative">
-              <p class="card_completion"><%= training.completion %> %</p>
-              <% if training.completion == 0 %>
-                <%= button_tag type: 'submit', class: "btn btn-danger card_icone" do %>
+   <div class="left_section">
+      <div class="row">
+         <%= render "shared/card_stat", valeur_1: @trainings.select { |a| a.completion > 0 }.size, data_name: "Programmes réalisés", data_text: "#{@ratio_total}%", data_percent: @ratio_total %>
+         <%= render "shared/card_stat", valeur_1: @completion_total, data_name: "Complétion des programmes", data_text: "#{@completion_total}%", data_percent: @completion_total %>
+         <%= render "shared/card_stat", valeur_1: @total[:done], data_name: "Répétitions d'exercices réalisés", data_text: "#{@total[:done]/@total[:goal].to_f * 100}%", data_percent: @total[:done] / @total[:goal].to_f * 100 %>
+      </div>
+      <hr>
+      <div class="text-right">
+         <%= link_to "Créer votre programme", new_training_path, class: "btn btn-outline-primary btn-block btn-lg" %>
+      </div>
+      <div class="row list_training">
+         <%= render 'shared/card_training' %>
+         <% @trainings.order('updated_at desc').each do |training| %>
+         <div class="col-sm-4 col-12 ">
+            <div class="card m-b-20 card_training" data-id="<%= training.id %>" data-name="<%= training.name %>">
+               <div class="card-header">
+                  <h3><%= training.name %></h3>
+               </div>
+               <div class="card-body card_relative">
+                  <p class="card_completion"><%= training.completion %> %</p>
+                  <% if training.completion == 0 %>
+                  <%= button_tag type: 'submit', class: "btn btn-danger card_icone" do %>
                   ◷
-                <% end %>
-              <% elsif training.completion < 100 %>
-                <%= button_tag type: 'submit', class: "btn btn-warning card_icone" do %>
-                   ✖
-                <% end %>
-              <% elsif training.completion == 100 %>
-                <%= button_tag type: 'submit', class: "btn btn-success card_icone" do %>
-                   ✔
-                <% end %>
-              <% else %>
-                <%= button_tag type: 'submit', class: "btn btn-primary card_icone" do %>
-                   ✔
-                <% end %>
-              <% end %>
-              <blockquote class="card-bodyquote align-bottom">
-                <% if training.completion != 0 && training.updated_at != training.created_at %>
-                  <p><%= training.updated_at.strftime("Modifié le %d/%m/%Y") %></p>
-                <% elsif training.created_at == training.updated_at %>
-                  <p><%= training.created_at.strftime("Crée le %d/%m/%Y") %></p>
-                <% else %>
-                  <p>Validé le <%= training.updated_at("Validé le %d/%m/%Y") %></p>
-                <% end %>
-              </blockquote>
+                  <% end %>
+                  <% elsif training.completion < 100 %>
+                  <%= button_tag type: 'submit', class: "btn btn-warning card_icone" do %>
+                  ✖
+                  <% end %>
+                  <% elsif training.completion == 100 %>
+                  <%= button_tag type: 'submit', class: "btn btn-success card_icone" do %>
+                  ✔
+                  <% end %>
+                  <% else %>
+                  <%= button_tag type: 'submit', class: "btn btn-primary card_icone" do %>
+                  ✔
+                  <% end %>
+                  <% end %>
+                  <blockquote class="card-bodyquote align-bottom">
+                     <% if training.completion != 0 && training.updated_at != training.created_at %>
+                     <p><%= training.updated_at.strftime("Modifié le %d/%m/%Y") %></p>
+                     <% elsif training.created_at == training.updated_at %>
+                     <p><%= training.created_at.strftime("Crée le %d/%m/%Y") %></p>
+                     <% else %>
+                     <p>Validé le <%= training.updated_at("Validé le %d/%m/%Y") %></p>
+                     <% end %>
+                  </blockquote>
+               </div>
             </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-  <div class="right_section">
-  </div>
+         </div>
+         <% end %>
+      </div>
+   </div>
+   <div class="right_section">
+   </div>
 </div>
-
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $( document ).ready(function() {
-      $('.counter').counterUp({
-          delay: 100,
-          time: 1200
-      });
-      $('.circliful-chart').circliful();
-    });
-  <% end %>
-  <%= javascript_pack_tag 'index_trainings' %>
+<%= javascript_tag do %>
+$( document ).ready(function() {
+$('.counter').counterUp({
+delay: 100,
+time: 1200
+});
+$('.circliful-chart').circliful();
+});
 <% end %>
-
-
-
-
-
-
-
-
+<%= javascript_pack_tag 'index_trainings' %>
+<% end %>
