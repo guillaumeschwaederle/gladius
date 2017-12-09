@@ -26,13 +26,14 @@ class TrainingsController < ApplicationController
 
   def create
     @training = Training.new(training_params)
+    @training.profile = current_user.profile
     @arr_series = params.keys.each_with_object([]) { |key, a| a << params[key] if key.match(/serie\d+/) }
     if @training.save
       @arr_series.each do |serie|
         e = Exercice.find_by_name(serie[:exercice_name])
         s = Serie.create(goal: serie[:goal], exercice: e, training: @training)
-        p s.errors
       end
+      redirect_to admin_trainings_path
     else
       render :new
     end
@@ -57,7 +58,7 @@ class TrainingsController < ApplicationController
   end
 
   def training_params
-    params.require(:training).permit(:name, :profile_id)
+    params.require(:training).permit(:name)
   end
 
   def completion(arr)
