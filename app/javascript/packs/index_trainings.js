@@ -33,7 +33,7 @@ const progress = (goal, done) => {
   }
 };
 
-const createTitle =(text) => {
+const createTitle = (text) => {
   right_section.innerHTML = title_training(text);
 };
 
@@ -49,18 +49,18 @@ trainings.forEach(function(training) {
     createTitle(name);
     console.log(exercices)
     console.log(series_training[id])
-    // Je veux sélectionner les séries du programme que j'ai sélectionné
     series_training[id].forEach(function(serie) {
-    // Faire un each sur chaque
-      // Ajouter la Card
-        // avec les bonnes valeurs
-        // et si possible
-      console.log('frites')
-      right_section.insertAdjacentHTML('beforeEnd', card(exercices[serie['exercice_id']]["name"], progress(serie['goal'], serie['done'])));
+      right_section.insertAdjacentHTML('beforeEnd', card(find_exercice_name(serie['exercice_id']), progress(serie['goal'], serie['done'])));
     });
-    // Recupérer les infos pour les crées
   });
 });
 
+// Problème avec le nom... Le return de la fonction find_exercice_name ne fonctionne pas... .??? mystère
 
-
+const find_exercice_name = (exercice_id) => {
+  exercices.forEach(function(exercice) {
+    if (exercice['id'] == exercice_id) {
+      return exercice['name']
+    };
+  })
+};
