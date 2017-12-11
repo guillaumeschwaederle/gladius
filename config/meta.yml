@@ -1,5 +1,7 @@
 meta_product_name: "GLADIUS"
-meta_title: "Gladius - Manage your trainings"
-meta_description: "A web tool making creating, planning, tracking and sharing its training easy and fun!"
-meta_image: "gladius-image.jpg"                           # Une image dans votre dossier app/assets/images/
+meta_title: "Gladius - Gérez vos entraînements, facilement."
+meta_description: "Faire du sport n'a jamais été aussi simple ! Gladius, c'est l'outil indispensable pour tous les sportifs qui veulent créer, programmer et gérer efficacement leurs entraînements, suivre leurs progrès et leurs performances."
+meta_image: "gladius-image.jpg" # Une image dans notre dossier app/assets/images/
+twitter_account: "@lewagonlille"
+
 
