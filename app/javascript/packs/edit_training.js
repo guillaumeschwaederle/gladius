@@ -2,7 +2,7 @@ const series = gon.series;
 const exercices = gon.exercices;
 let x = 0;
 
-const updateSerie = (text, goal, id, x) => {
+const updateSerie = (text, goal, x, id) => {
     return `<div class= "card-exercice-new-serie" data-name= "${text}">
         <input type="hidden" value="${text}" name="seriereal${x}[exercice_name]">
         <input type="hidden" value="${id}" name="seriereal${x}[id]">
@@ -43,7 +43,7 @@ const updateSerie = (text, goal, id, x) => {
             </div>
             <div>
             </br>
-            <a action="/training/${id}"><button class="btn btn-outline-warning btn-block delete-exercice-from-serie"
+            <a href="/series/${id}" data-method="delete"><button type="submit" class="btn btn-outline-warning btn-block delete-exercice-from-serie"
                         type="button">Supprimer</button></a>
             </div>
         </div>
@@ -98,7 +98,7 @@ const find_exercice_name = (exercice_id) => {
 
 series.forEach((serie) => {
   const dataNameCurrentCard = find_exercice_name(serie["exercice_id"])
-  document.getElementById('formul').insertAdjacentHTML('beforeend', updateSerie(dataNameCurrentCard, serie['goal'], serie['id'], x));
+  document.getElementById('formul').insertAdjacentHTML('beforeend', updateSerie(dataNameCurrentCard, serie['goal'], x, serie['id']));
   increment_on_plus();
   increment_on_moins();
   delete_exercice_on_btn_click();

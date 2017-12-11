@@ -69,9 +69,9 @@ class TrainingsController < ApplicationController
     end
     @arr_seriesreal = params.keys.each_with_object([]) { |key, a| a << params[key] if key.match(/seriereal\d+/) }
       @arr_seriesreal.each do |serie|
-      s = Serie.find(serie[:id])
-      s.goal = serie[:goal]
-      s.save
+      s = Serie.find(serie[:id]) if Serie.exists?(id: serie[:id])
+      s.goal = serie[:goal] if s
+      s.save if s
     end
     redirect_to trainings_path
   end
