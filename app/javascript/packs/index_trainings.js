@@ -176,3 +176,20 @@ function increment_on_moins() {
         assignement.value = reps;
     });
 };
+
+
+
+// DELETE BUTTON START
+const deleteButtons = document.querySelectorAll('.delete-program-from-index');
+
+deleteButtons.forEach((deleteButton) => {
+  deleteButton.addEventListener("click", (event) => {
+    deleteprogramfromindex(event);
+  });
+});
+
+function deleteprogramfromindex(event) {
+  event.currentTarget.parentNode.parentNode.remove();
+  // location.reload(); <== si on veux reorganiser les card apres un delete
+}
+// DELETE BUTTON END

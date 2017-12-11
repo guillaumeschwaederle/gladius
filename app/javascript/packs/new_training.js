@@ -112,5 +112,3 @@ function delete_exercice_on_btn_click() {
         parrent.removeChild(cardCurrent);
     });
 }
-
-

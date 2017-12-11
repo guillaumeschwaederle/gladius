@@ -1,5 +1,5 @@
 class TrainingsController < ApplicationController
-  before_action :set_training, only: [:edit, :update]
+  before_action :set_training, only: [:edit, :update, :destroy]
 
   def index
     @trainings = Training.all
@@ -53,6 +53,10 @@ class TrainingsController < ApplicationController
       s.save
     end
     redirect_to trainings_path
+  end
+
+  def destroy
+    @training.destroy
   end
 
   private
