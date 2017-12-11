@@ -1,4 +1,7 @@
 class ErrorsController < ApplicationController
+    skip_before_action :authenticate_user!
+    skip_before_action :profile_present?
+
   def not_found
     render(:status => 404)
   end

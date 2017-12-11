@@ -1,1 +1,71 @@
-// Specific CSS for your home-page
+.home {
+  position: relative;
+}
+
+.body-home {
+  background-color : white;
+}
+
+.title {
+font-size: 49px;
+font-weight: 400;
+color: white;
+text-align: left;
+letter-spacing: 0.5px;
+margin-top: 170px;
+text-shadow: {text-shadow: 3px 3px 0px rgba(63,107,169, 0.5)};
+}
+
+.dark-title{
+font-size: 35px;
+font-weight: 400;
+color: #212529;
+text-align: center;
+letter-spacing: 0.5px;
+margin-top: 60px;
+margin-bottom: 45px;
+text-shadow: {text-shadow: 3px 3px 0px rgba(63,107,169, 0.5)};
+}
+
+.parallax {
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  width: 100%;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.bg-img-1 {
+  background: url("http://res.cloudinary.com/claires/image/upload/q_40/c_scale,h_907,w_1467/v1512989937/iStock_000070815611_Medium_wqhw4d.jpg");
+  background-size: cover !important;
+  background-attachment: scroll;
+  background-position-x: 0%;
+  background-position-y: 44%;
+  background-size: auto auto;
+  height: 585px;
+  margin-top: -62px;
+
+}
+
+.centrage{
+  text-align: center;
+}
+
+
+#global {
+  color: $jaune-gladius;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40px;
+  margin-bottom: 15px;
+  margin-top: 10px
+}
+
+.space-after{
+  margin-bottom: 40px
+}
+
+.margin-twice{
+ padding-left: 115px;
+}
