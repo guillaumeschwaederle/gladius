@@ -87,7 +87,7 @@ trainings.forEach(function(training) {
       };
     });
     if (training.attributes['data-completion'].value == 0) {
-      form.insertAdjacentHTML('beforeEnd', form_end());
+      form.insertAdjacentHTML('beforeEnd', form_end(id));
     };
   });
 });
@@ -147,8 +147,9 @@ const form_begin = (training_id) => {
         </form>`
 };
 
-const form_end = () => {
-  return `<input type="submit" class="btn btn-primary"></input>`
+const form_end = (training_id) => {
+  return `<input type="submit" class="btn btn-primary"></input>
+  <a href='/trainings/${training_id}/edit' method='get' class='btn btn-primary'>Editer</a>`
 };
 
 
