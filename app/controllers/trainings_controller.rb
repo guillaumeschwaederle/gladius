@@ -33,7 +33,7 @@ class TrainingsController < ApplicationController
         e = Exercice.find_by_name(serie[:exercice_name])
         s = Serie.create(goal: serie[:goal], exercice: e, training: @training)
       end
-      redirect_to admin_trainings_path
+      redirect_to trainings_path
     else
       render :new
     end
