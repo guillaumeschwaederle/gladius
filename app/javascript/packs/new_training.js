@@ -56,9 +56,6 @@ const newSerie = (text, x) => {
         </div>
     </div>
 `}
-// document.querySelector('.card-plus').parentNode.parentNode.querySelector('input').value
-
-// for each parse selectioner le dernier
 
 const cards = document.querySelectorAll('.card');
 let x = 0
@@ -98,7 +95,6 @@ function increment_on_moins() {
         }
         assignement = cardChoixRep.parentNode.parentNode.querySelector('input');
         assignement.value = reps;
-        console.log(assignement.value);
     });
 }
 
