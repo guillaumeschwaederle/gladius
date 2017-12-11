@@ -109,38 +109,38 @@ function delete_exercice_on_btn_click() {
     });
 }
 
-const validerLeProgramme = document.querySelector('.btn-creer-mon-programme');
+// const validerLeProgramme = document.querySelector('.btn-creer-mon-programme');
 
 
-function disableButton() {
-validerLeProgramme.disabled = true;
-validerLeProgramme.classList.add("bouton-disabled")
-};
+// function disableButton() {
+// validerLeProgramme.disabled = true;
+// validerLeProgramme.classList.add("bouton-disabled")
+// };
 
-document.addEventListener("DOMContentLoaded", () => {
-    disableButton();
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//     disableButton();
+// });
 
-const programmeName = document.getElementById('.exampleInputEmail1').value;
-function validateForm() {
-    if (validerLeProgramme != "") {
-        validerLeProgramme.disabled = false;
-    };
-};
+// const programmeName = document.getElementById('.exampleInputEmail1').value;
+// function validateForm() {
+//     if (validerLeProgramme != "") {
+//         validerLeProgramme.disabled = false;
+//     };
+// };
 
-validateForm();
+// validateForm();
 
-const programmeName = document.getElementById('.exampleInputEmail1').value;
+// const programmeName = document.getElementById('.exampleInputEmail1').value;
 
-function checkcontentform() {
-    if (validerLeProgramme != "") {
-        validerLeProgramme.disabled = false;
-    };
-};
+// function checkcontentform() {
+//     if (validerLeProgramme != "") {
+//         validerLeProgramme.disabled = false;
+//     };
+// };
 
-programmeName.addEventListener('keyup', (event)) => {
-    checkcontentform();
-};
+// programmeName.addEventListener('keyup', (event)) => {
+//     checkcontentform();
+// };
 
 
 

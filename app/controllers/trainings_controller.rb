@@ -2,7 +2,7 @@ class TrainingsController < ApplicationController
   before_action :set_training, only: [:edit, :update, :destroy]
 
   def index
-    @trainings = Training.all
+    @trainings = current_user.profile.trainings
     @series_training = Serie.all.group_by { |s| s.training.id }
     gon.trainings = @trainings
     @exercices = Exercice.all
