@@ -1,9 +1,9 @@
 <div class="content">
    <div class="left_section">
       <div class="row">
-         <%= render "shared/card_stat", valeur_1: @trainings.select { |a| a.completion > 0 }.size, data_name: "Programmes réalisés", data_text: "#{@ratio_total}%", data_percent: @ratio_total %>
-         <%= render "shared/card_stat", valeur_1: @completion_total, data_name: "Complétion moyenne", data_text: "#{@completion_total}%", data_percent: @completion_total %>
-         <%= render "shared/card_stat", valeur_1: @total[:done], data_name: "Nb de reps réalisés", data_text: "#{(@total[:done]/@total[:goal].to_f * 100).round(2)}%", data_percent: @total[:done] / @total[:goal].to_f * 100 %>
+         <%= render "shared/card_stat", valeur_1: @trainings.select { |a| a.completion > 0 }.size, data_name: "Programmes réalisés", symbol: "",data_text: "#{@ratio_total}%", data_percent: @ratio_total %>
+         <%= render "shared/card_stat", valeur_1: @completion_total, data_name: "Complétion moyenne", data_text: "#{@completion_total}%", symbol: "%", data_percent: @completion_total %>
+         <%= render "shared/card_stat", valeur_1: @total[:done], data_name: "Nb de reps réalisés", symbol: "", data_text: "#{(@total[:done]/@total[:goal].to_f * 100).round(2)}%", data_percent: @total[:done] / @total[:goal].to_f * 100 %>
       </div>
       <hr>
       <div class="text-right">
