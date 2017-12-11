@@ -17,7 +17,6 @@ const title_training = (text) => {
 };
 
 const card_progress = (name_exercice, progress) => {
-  console.log(name_exercice);
   return `<div class="card m-b-20 card-body text-xs-center">
     <h5 class="card-title serie_name">${name_exercice}</h5>
     <p class="card-text">
@@ -85,9 +84,11 @@ trainings.forEach(function(training) {
         increment_on_plus();
         increment_on_moins();
         x += 1;
-      }
+      };
     });
-    form.insertAdjacentHTML('beforeEnd', form_end());
+    if (training.attributes['data-completion'].value == 0) {
+      form.insertAdjacentHTML('beforeEnd', form_end());
+    };
   });
 });
 
@@ -199,7 +200,7 @@ function deleteprogramfromindex(event) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const programmePasFaits = document.querySelectorAll('.programme-pas-fait');
-  
+
   programmePasFaits.forEach((programmePasFait) => {
     const card = programmePasFait.parentNode.parentNode;
     card.classList.add("programme-pas-fait-card");
