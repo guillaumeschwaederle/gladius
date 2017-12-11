@@ -78,5 +78,6 @@ deleteButtons.forEach((deleteButton) => {
 
 function deleteprogramfromindex(event) {
   event.currentTarget.parentNode.parentNode.remove();
+  // location.reload(); <== si on veux reorganiser les card apres un delete
 }
 // DELETE BUTTON END
