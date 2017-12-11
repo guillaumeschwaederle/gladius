@@ -2,37 +2,43 @@
    <div class="left_section">
       <div class="row">
          <%= render "shared/card_stat", valeur_1: @trainings.select { |a| a.completion > 0 }.size, data_name: "Programmes réalisés", data_text: "#{@ratio_total}%", data_percent: @ratio_total %>
-         <%= render "shared/card_stat", valeur_1: @completion_total, data_name: "Complétion des programmes", data_text: "#{@completion_total}%", data_percent: @completion_total %>
-         <%= render "shared/card_stat", valeur_1: @total[:done], data_name: "Répétitions d'exercices réalisés", data_text: "#{@total[:done]/@total[:goal].to_f * 100}%", data_percent: @total[:done] / @total[:goal].to_f * 100 %>
+         <%= render "shared/card_stat", valeur_1: @completion_total, data_name: "Complétion moyenne", data_text: "#{@completion_total}%", data_percent: @completion_total %>
+         <%= render "shared/card_stat", valeur_1: @total[:done], data_name: "Nb de reps réalisés", data_text: "#{(@total[:done]/@total[:goal].to_f * 100).round(2)}%", data_percent: @total[:done] / @total[:goal].to_f * 100 %>
       </div>
       <hr>
       <div class="text-right">
-         <%= link_to "Créer votre programme", new_training_path, class: "btn btn-outline-primary btn-block btn-lg" %>
+        <div class="row">
+            <div class="container">
+              <div class="new-program-button">
+                <%= link_to "Créer votre programme", new_training_path, class: "btn btn-outline-primary btn-block btn-lg new-program-button" %>
+              </div>
+          </div>
+        </div>
       </div>
       <div class="row list_training">
-         <%= render 'shared/card_training' %>
+         <%-# render 'shared/card_training' %>
          <% @trainings.order('updated_at desc').each do |training| %>
          <div class="col-sm-4 col-12 ">
-            <div class="card m-b-20 card_training" data-id="<%= training.id %>" data-name="<%= training.name %>">
+            <div class="card m-b-20 card_training" data-id="<%= training.id %>" data-name="<%= training.name %>" data-completion="<%= training.completion %>">
                <div class="card-header">
                   <h3><%= training.name %></h3>
                </div>
                <div class="card-body card_relative">
-                  <p class="card_completion"><%= training.completion %> %</p>
+                  <p class="card_completion"><%= (training.completion).round(2) %> %</p>
                   <% if training.completion == 0 %>
-                  <%= button_tag type: 'submit', class: "btn btn-danger card_icone" do %>
+                  <%= button_tag type: 'submit', class: "btn btn-danger card_icone programme-pas-fait" do %>
                   ◷
                   <% end %>
                   <% elsif training.completion < 100 %>
-                  <%= button_tag type: 'submit', class: "btn btn-warning card_icone" do %>
+                  <%= button_tag type: 'submit', class: "btn btn-warning card_icone programme-sous-obj" do %>
                   ✖
                   <% end %>
                   <% elsif training.completion == 100 %>
-                  <%= button_tag type: 'submit', class: "btn btn-success card_icone" do %>
+                  <%= button_tag type: 'submit', class: "btn btn-success card_icone programme-fait" do %>
                   ✔
                   <% end %>
                   <% else %>
-                  <%= button_tag type: 'submit', class: "btn btn-primary card_icone" do %>
+                  <%= button_tag type: 'submit', class: "btn btn-primary card_icone " do %>
                   ✔
                   <% end %>
                   <% end %>
@@ -46,13 +52,17 @@
                      <% end %>
                   </blockquote>
                </div>
+                <%= link_to training_path(training), method: :delete, remote: true, data: { confirm: "Are you sure?" } do %>
+                <button class="btn btn-outline-warning btn-block delete-program-from-index"
+                type="button">Supprimer</button>
+                <% end %>
             </div>
          </div>
          <% end %>
       </div>
    </div>
-   <div class="right_section">
-   </div>
+    <div class="right_section">
+    </div>
 </div>
 
 <% content_for(:after_js) do %>

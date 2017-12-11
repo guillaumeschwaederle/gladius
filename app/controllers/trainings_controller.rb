@@ -1,5 +1,5 @@
 class TrainingsController < ApplicationController
-  before_action :set_training, only: [:edit, :update]
+  before_action :set_training, only: [:edit, :update, :destroy]
 
   def index
     @trainings = Training.all
@@ -10,8 +10,10 @@ class TrainingsController < ApplicationController
     gon.series_exercice = @series_exercice
     gon.exercices = @exercices
     @ratio_total = ratio(@trainings).round(2)
-    @completion_total = completion(@trainings)
+    @completion_total = completion(@trainings).round(2)
     @total = number(@trainings)
+    @token = session[:_csrf_token]
+    gon.token = @token
   end
 
 
@@ -44,11 +46,17 @@ class TrainingsController < ApplicationController
   end
 
   def update
-    if @training.update(training_params)
-      redirect_to trainings_path
-    else
-      render :new
+    @arr_series = params.keys.each_with_object([]) { |key, a| a << params[key] if key.match(/serie\d+/) }
+    @arr_series.each do |serie|
+      s = Serie.find(serie[:id])
+      s.done = serie[:done]
+      s.save
     end
+    redirect_to trainings_path
+  end
+
+  def destroy
+    @training.destroy
   end
 
   private
