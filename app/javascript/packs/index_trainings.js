@@ -193,3 +193,29 @@ function deleteprogramfromindex(event) {
   // location.reload(); <== si on veux reorganiser les card apres un delete
 }
 // DELETE BUTTON END
+
+
+// couleur des cards des programes en fonction de la completion
+
+document.addEventListener("DOMContentLoaded", () => {
+  const programmePasFaits = document.querySelectorAll('.programme-pas-fait');
+  
+  programmePasFaits.forEach((programmePasFait) => {
+    const card = programmePasFait.parentNode.parentNode;
+    card.classList.add("programme-pas-fait-card");
+  });
+
+  const programmeSousObj = document.querySelectorAll('.programme-sous-obj');
+
+  programmeSousObj.forEach((programmePasFait) => {
+    const card = programmePasFait.parentNode.parentNode;
+    card.classList.add("programme-sous-obj-card");
+  });
+
+  const programmeFaits = document.querySelectorAll('.programme-fait');
+
+  programmeFaits.forEach((programmePasFait) => {
+    const card = programmePasFait.parentNode.parentNode;
+    card.classList.add("programme-fait-card");
+  });
+});
