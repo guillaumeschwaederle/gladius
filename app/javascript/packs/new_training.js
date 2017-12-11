@@ -108,3 +108,39 @@ function delete_exercice_on_btn_click() {
         parrent.removeChild(cardCurrent);
     });
 }
+
+// const validerLeProgramme = document.querySelector('.btn-creer-mon-programme');
+
+
+// function disableButton() {
+// validerLeProgramme.disabled = true;
+// validerLeProgramme.classList.add("bouton-disabled")
+// };
+
+// document.addEventListener("DOMContentLoaded", () => {
+//     disableButton();
+// });
+
+// const programmeName = document.getElementById('.exampleInputEmail1').value;
+// function validateForm() {
+//     if (validerLeProgramme != "") {
+//         validerLeProgramme.disabled = false;
+//     };
+// };
+
+// validateForm();
+
+// const programmeName = document.getElementById('.exampleInputEmail1').value;
+
+// function checkcontentform() {
+//     if (validerLeProgramme != "") {
+//         validerLeProgramme.disabled = false;
+//     };
+// };
+
+// programmeName.addEventListener('keyup', (event)) => {
+//     checkcontentform();
+// };
+
+
+
