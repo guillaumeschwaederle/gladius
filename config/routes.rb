@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'errors/not_found'
+
+  get 'errors/internal_server_error'
+
   ActiveAdmin.routes(self)
   resources :trainings, only: [:index, :new, :create, :edit, :update] do
     resources :series, only: [:create, :update, :destroy]
@@ -8,6 +12,9 @@ Rails.application.routes.draw do
   resources :profiles, only: [:new, :create, :show, :edit, :update]
 
   root to: "trainings#index"
+
+  match "/404", :to => "errors#not_found", :via => :all
+        match "/500", :to => "errors#internal_server_error", :via => :all
 
   devise_for :users,
   controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
