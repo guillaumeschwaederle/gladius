@@ -1,6 +1,4 @@
-
-    <% @categories =  @exercices.map { |e| e.category }.uniq %>
-
+<% @categories =  @exercices.map { |e| e.category }.uniq %>
 <div class="container">
   <% @categories.each do |cat| %>
     <div class= "title-left-layout underline-title">

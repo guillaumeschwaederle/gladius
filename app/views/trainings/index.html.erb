@@ -48,7 +48,7 @@
                      <% elsif training.created_at == training.updated_at %>
                      <p><%= training.created_at.strftime("Crée le %d/%m/%Y") %></p>
                      <% else %>
-                     <p>Validé le <%= training.updated_at("Validé le %d/%m/%Y") %></p>
+                     <p>Validé le <%= training.updated_at.strftime("Validé le %d/%m/%Y") %></p>
                      <% end %>
                   </blockquote>
                </div>
