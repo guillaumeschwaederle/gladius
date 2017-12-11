@@ -33,8 +33,8 @@
   </div>
 </div>
 
+<% content_for :meta_title, "#{DEFAULT_META["meta_product_name"]} - Modifier mon entraînement" %>
 <% content_for(:after_js) do %>
     <% javascript_pack_tag 'new_training'%>
     <% javascript_pack_tag 'edit_training'%>
 <% end %>
-
