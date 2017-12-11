@@ -26,19 +26,19 @@
                <div class="card-body card_relative">
                   <p class="card_completion"><%= training.completion %> %</p>
                   <% if training.completion == 0 %>
-                  <%= button_tag type: 'submit', class: "btn btn-danger card_icone" do %>
+                  <%= button_tag type: 'submit', class: "btn btn-danger card_icone programme-pas-fait" do %>
                   ◷
                   <% end %>
                   <% elsif training.completion < 100 %>
-                  <%= button_tag type: 'submit', class: "btn btn-warning card_icone" do %>
+                  <%= button_tag type: 'submit', class: "btn btn-warning card_icone programme-sous-obj" do %>
                   ✖
                   <% end %>
                   <% elsif training.completion == 100 %>
-                  <%= button_tag type: 'submit', class: "btn btn-success card_icone" do %>
+                  <%= button_tag type: 'submit', class: "btn btn-success card_icone programme-fait" do %>
                   ✔
                   <% end %>
                   <% else %>
-                  <%= button_tag type: 'submit', class: "btn btn-primary card_icone" do %>
+                  <%= button_tag type: 'submit', class: "btn btn-primary card_icone " do %>
                   ✔
                   <% end %>
                   <% end %>
