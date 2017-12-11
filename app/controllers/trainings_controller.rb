@@ -1,5 +1,5 @@
 class TrainingsController < ApplicationController
-  before_action :set_training, only: [:edit, :update]
+  before_action :set_training, only: [:edit, :update, :destroy]
 
   def index
     @trainings = Training.all
@@ -49,6 +49,10 @@ class TrainingsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @training.destroy
   end
 
   private
