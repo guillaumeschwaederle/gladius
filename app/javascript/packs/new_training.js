@@ -52,7 +52,7 @@ const newSerie = (text, x) => {
             </br>
             <button class="btn btn-outline-warning btn-block delete-exercice-from-serie"
                         type="button">Supprimer</button>
-            </div
+            </div>
         </div>
     </div>
 `}
