@@ -47,8 +47,8 @@ trainings.forEach(function(training) {
     const prog = document.querySelector(`[data-id="${id}"]`);
     const name = prog.attributes["data-name"].value
     createTitle(name);
-    console.log(exercices)
-    console.log(series_training[id])
+    // console.log(exercices)
+    // console.log(series_training[id])
     series_training[id].forEach(function(serie) {
       right_section.insertAdjacentHTML('beforeEnd', card(find_exercice_name(serie['exercice_id']), progress(serie['goal'], serie['done'])));
     });
@@ -64,3 +64,19 @@ const find_exercice_name = (exercice_id) => {
     };
   })
 };
+
+
+
+// DELETE BUTTON START
+const deleteButtons = document.querySelectorAll('.delete-program-from-index');
+
+deleteButtons.forEach((deleteButton) => {
+  deleteButton.addEventListener("click", (event) => {
+    deleteprogramfromindex(event);
+  });
+});
+
+function deleteprogramfromindex(event) {
+  event.currentTarget.parentNode.parentNode.remove();
+}
+// DELETE BUTTON END
