@@ -52,13 +52,10 @@ const newSerie = (text, x) => {
             </br>
             <button class="btn btn-outline-warning btn-block delete-exercice-from-serie"
                         type="button">Supprimer</button>
-            </div
+            </div>
         </div>
     </div>
 `}
-// document.querySelector('.card-plus').parentNode.parentNode.querySelector('input').value
-
-// for each parse selectioner le dernier
 
 const cards = document.querySelectorAll('.card');
 let x = 0
@@ -98,7 +95,6 @@ function increment_on_moins() {
         }
         assignement = cardChoixRep.parentNode.parentNode.querySelector('input');
         assignement.value = reps;
-        console.log(assignement.value);
     });
 }
 
@@ -112,5 +108,3 @@ function delete_exercice_on_btn_click() {
         parrent.removeChild(cardCurrent);
     });
 }
-
-
