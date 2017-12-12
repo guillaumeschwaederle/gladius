@@ -1,49 +1,25 @@
 <% content_for :meta_title, "#{DEFAULT_META["meta_product_name"]} - Mon tableau de bord" %>
       <div class="row">
-         <%= render "shared/card_stat1", valeur_1: @trainings.select { |a| a.completion > 0 }.size, data_name: "Programmes réalisés", symbol: "",data_text: "#{@ratio_total}%", data_percent: @ratio_total %>
-         <%= render "shared/card_stat2", valeur_1: @completion_total, data_name: "Complétion moyenne", data_text: "#{@completion_total}%", symbol: "%", data_percent: @completion_total %>
-         <%= render "shared/card_stat3", valeur_1: @total[:done], data_name: "Nb de reps réalisés", symbol: "", data_text: "#{(@total[:done]/@total[:goal].to_f * 100).round(2)}%", data_percent: @total[:done] / @total[:goal].to_f * 100 %>
+         <%= render "shared/card_stat" %>
+         <%= render "shared/card_stat" %>
+         <%= render "shared/card_stat" %>
       </div>
 <div class="content dashboard-programs-section">
-   <div class="left_section">
+  <div class="left_section">
    <div class="container text-center">
    <h1> Mes Programmes </h1>
-   </div>  
+   </div>
       <div class="row list_training">
          <%-# render 'shared/card_training' %>
          <% @trainings.order('updated_at desc').each do |training| %>
          <div class="col-sm-4 col-12 ">
-            <div class="card m-b-20 card_training" data-id="<%= training.id %>" data-name="<%= training.name %>" data-completion="<%= training.completion %>">
+            <div class="card m-b-20 card_training" data-id="<%= training.id %>" data-name="<%= training.name %>" data-completion="fzef">
                <div class="card-header">
                   <h3><%= training.name %></h3>
                </div>
                <div class="card-body card_relative">
-                  <p class="card_completion"><%= (training.completion).round(2) %> %</p>
-                  <% if training.completion == 0 %>
-                  <%= button_tag type: 'submit', class: "btn btn-danger card_icone programme-pas-fait" do %>
-                  ◷
-                  <% end %>
-                  <% elsif training.completion < 100 %>
-                  <%= button_tag type: 'submit', class: "btn btn-warning card_icone programme-sous-obj" do %>
-                  ✖
-                  <% end %>
-                  <% elsif training.completion == 100 %>
-                  <%= button_tag type: 'submit', class: "btn btn-success card_icone programme-fait" do %>
-                  ✔
-                  <% end %>
-                  <% else %>
-                  <%= button_tag type: 'submit', class: "btn btn-primary card_icone " do %>
-                  ✔
-                  <% end %>
-                  <% end %>
+                  <p class="card_completion"> %</p>
                   <blockquote class="card-bodyquote align-bottom">
-                     <% if training.completion != 0 && training.updated_at != training.created_at %>
-                     <p><%= training.updated_at.strftime("Modifié le %d/%m/%Y") %></p>
-                     <% elsif training.created_at == training.updated_at %>
-                     <p><%= training.created_at.strftime("Crée le %d/%m/%Y") %></p>
-                     <% else %>
-                     <p>Validé le <%= training.updated_at.strftime("Validé le %d/%m/%Y") %></p>
-                     <% end %>
                   </blockquote>
                </div>
                 <%= link_to training_path(training), method: :delete, remote: true, data: { confirm: "Are you sure?" } do %>
@@ -54,8 +30,8 @@
          <% end %>
       </div>
    </div>
-    <div class="right_section">
-
+  <div class="right_section">
+  </div>
 </div>
 
 <% content_for(:after_js) do %>

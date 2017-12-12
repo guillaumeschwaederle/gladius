@@ -9,9 +9,9 @@ class TrainingsController < ApplicationController
     gon.series_training = @series_training
     gon.series_exercice = @series_exercice
     gon.exercices = @exercices
-    @ratio_total = ratio(@trainings).round(2)
-    @completion_total = completion(@trainings).round(2)
-    @total = number(@trainings)
+    @ratio_total = 0
+    @completion_total = 0
+    @total = 0
     @token = session[:_csrf_token]
     gon.token = @token
   end
@@ -88,33 +88,5 @@ class TrainingsController < ApplicationController
 
   def training_params
     params.require(:training).permit(:name)
-  end
-
-  def completion(arr)
-    average_arr = []
-    arr.select { |a| a.completion > 0 }.each do |training|
-      average_arr << training.completion
-    end
-    unless average_arr == []
-      average_arr.sum / average_arr.size
-    else
-      0
-    end
-  end
-
-  def ratio(arr)
-    arr.select { |a| a.completion > 0 }.size / arr.size.to_f * 100
-  end
-
-  def number(arr)
-    done = 0
-    goal = 0
-    arr.select { |a| a.completion > 0 }.each do |training|
-      training.series.each do |serie|
-          done += serie.done if serie.done
-          goal += serie.goal
-      end
-    end
-    {done: done, goal: goal}
   end
 end
