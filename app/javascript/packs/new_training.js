@@ -52,8 +52,6 @@ const newSerie = (text, x) => {
 const cards = document.querySelectorAll('.card');
 let x = 0
 
-
-
 cards.forEach((card) => {
     card.addEventListener("click", (event) => {
         const dataNameCurrentCard = event.currentTarget.attributes["data-name"].value
@@ -61,6 +59,7 @@ cards.forEach((card) => {
         increment_on_plus();
         increment_on_moins();
         delete_exercice_on_btn_click();
+        validateForm();
         x += 1;
     });
 });
@@ -101,38 +100,35 @@ function delete_exercice_on_btn_click() {
     });
 }
 
-// const validerLeProgramme = document.querySelector('.btn-creer-mon-programme');
+// VALIDER LE PROGRAMME NAME ET UN EXO AVANT DE VALIDER LE PROGRAMME
 
+const validerLeProgramme = document.querySelector('.btn-creer-mon-programme');
 
-// function disableButton() {
-// validerLeProgramme.disabled = true;
-// validerLeProgramme.classList.add("bouton-disabled")
-// };
+function disableButton() {
+validerLeProgramme.disabled = true;
+validerLeProgramme.classList.add("bouton-disabled")
+};
 
-// document.addEventListener("DOMContentLoaded", () => {
-//     disableButton();
-// });
+document.addEventListener("DOMContentLoaded", () => {
+    disableButton();
+});
 
-// const programmeName = document.getElementById('.exampleInputEmail1').value;
-// function validateForm() {
-//     if (validerLeProgramme != "") {
-//         validerLeProgramme.disabled = false;
-//     };
-// };
+const numberOfExerciceAdded = document.querySelectorAll('.card-exercice-new-serie').length;
 
-// validateForm();
+const programmeNameValue = document.getElementById('exampleInputEmail1').value;
+const programmeName = document.getElementById('exampleInputEmail1');
 
-// const programmeName = document.getElementById('.exampleInputEmail1').value;
+function validateForm() {
+    const programmeNameValue = document.getElementById('exampleInputEmail1').value;
+    if (programmeNameValue != "") {
+        validerLeProgramme.disabled = false;
+        validerLeProgramme.classList.remove("bouton-disabled")
+    } else {
+        validerLeProgramme.disabled = true;
+        validerLeProgramme.classList.add("bouton-disabled")
+    };
+};
 
-// function checkcontentform() {
-//     if (validerLeProgramme != "") {
-//         validerLeProgramme.disabled = false;
-//     };
-// };
-
-// programmeName.addEventListener('keyup', (event)) => {
-//     checkcontentform();
-// };
-
-
-
+programmeName.addEventListener('keyup', (event) => {
+    validateForm();
+});
