@@ -97,6 +97,7 @@ function delete_exercice_on_btn_click() {
         cardCurrent = deleteButton.parentNode.parentNode.parentNode;
         console.log(cardCurrent);
         parrent.removeChild(cardCurrent);
+        validateForm();
     });
 }
 
@@ -120,7 +121,8 @@ const programmeName = document.getElementById('exampleInputEmail1');
 
 function validateForm() {
     const programmeNameValue = document.getElementById('exampleInputEmail1').value;
-    if (programmeNameValue != "") {
+const numberOfExerciceAdded = document.querySelectorAll('.card-exercice-new-serie').length;
+    if (programmeNameValue != "" && numberOfExerciceAdded > 0) {
         validerLeProgramme.disabled = false;
         validerLeProgramme.classList.remove("bouton-disabled")
     } else {
@@ -132,3 +134,7 @@ function validateForm() {
 programmeName.addEventListener('keyup', (event) => {
     validateForm();
 });
+
+
+
+
