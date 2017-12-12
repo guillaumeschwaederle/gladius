@@ -33,14 +33,6 @@ const newSerie = (text, x) => {
                     data-bts-button-up-class="btn btn-default"
                             class="form-control"
                             style="display: block;"
-                            title="overall type: UNKNOWN_TYPE
-                                server type: NO_SERVER_DATA
-                                heuristic type: UNKNOWN_TYPE
-                                label: 55
-                                parseable name: demo0
-                                field signature: 1118299366
-                                form signature: 4665707751168479884"
-                            autofill-prediction="UNKNOWN_TYPE">
                     <span class="input-group-addon bootstrap-touchspin-postfix"
                         style="display: none;"></span>
                     <span class="input-group-btn">

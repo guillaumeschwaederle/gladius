@@ -49,13 +49,12 @@
                      <% elsif training.created_at == training.updated_at %>
                      <p><%= training.created_at.strftime("Crée le %d/%m/%Y") %></p>
                      <% else %>
-                     <p>Validé le <%= training.updated_at("Validé le %d/%m/%Y") %></p>
+                     <p>Validé le <%= training.updated_at.strftime("Validé le %d/%m/%Y") %></p>
                      <% end %>
                   </blockquote>
                </div>
                 <%= link_to training_path(training), method: :delete, remote: true, data: { confirm: "Are you sure?" } do %>
-                <button class="btn btn-outline-warning btn-block delete-program-from-index"
-                type="button">Supprimer</button>
+                  <button class="btn btn-outline-warning btn-block delete-program-from-index" type="button">Supprimer</button>
                 <% end %>
             </div>
          </div>
