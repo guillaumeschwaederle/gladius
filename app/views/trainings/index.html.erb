@@ -1,37 +1,40 @@
 <% content_for :meta_title, "#{DEFAULT_META["meta_product_name"]} - Mon tableau de bord" %>
-      <div class="row">
-         <%= render "shared/card_stat" %>
-         <%= render "shared/card_stat" %>
-         <%= render "shared/card_stat" %>
-      </div>
 <div class="content dashboard-programs-section">
-  <div class="left_section">
-   <div class="container text-center">
-   <h1> Mes Programmes </h1>
-   </div>
+  <div class="container text-center">
+    <h1 class="title_programs"> Mes Programmes </h1>
+      <div class="row btn-programs">
+        <%= link_to new_training_path do %>
+          <button class="btn btn-outline-primary btn-block">Créer votre programme</button>
+        <% end %>
+      </div>
       <div class="row list_training">
          <%-# render 'shared/card_training' %>
          <% @trainings.order('updated_at desc').each do |training| %>
-         <div class="col-sm-4 col-12 ">
+         <div class="col-sm-4 col-12">
+         <%= link_to training_path(training) do %>
             <div class="card m-b-20 card_training" data-id="<%= training.id %>" data-name="<%= training.name %>" data-completion="fzef">
                <div class="card-header">
                   <h3><%= training.name %></h3>
                </div>
                <div class="card-body card_relative">
-                  <p class="card_completion"> %</p>
-                  <blockquote class="card-bodyquote align-bottom">
-                  </blockquote>
+                    <blockquote class="card-bodyquote align-bottom">
+                      <i class="fa fa-flag-checkered goal" aria-hidden="true"></i>
+                      <p>Exercices : <%= training.series.count %></p>
+                      <p>Séries : <%= training.seances.count %></p>
+                    </blockquote>
+                    <div style="border-left:1px solid #AAA;height:100px"></div>
+                    <blockquote class="card-bodyquote align-bottom">
+                      <i class="fa fa-check check" aria-hidden="true"></i>
+                      <p>Séances : <%= training.seances.count %></p>
+                      <p>Complétion : <%= (training.percent * 100).round() %> %</p>
+                    </blockquote>
                </div>
-                <%= link_to training_path(training), method: :delete, remote: true, data: { confirm: "Are you sure?" } do %>
-                  <button class="btn btn-outline-warning btn-block delete-program-from-index" type="button">Supprimer</button>
-                <% end %>
             </div>
+         <% end %>
          </div>
          <% end %>
       </div>
    </div>
-  <div class="right_section">
-  </div>
 </div>
 
 <% content_for(:after_js) do %>
