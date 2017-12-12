@@ -1,2 +1,46 @@
-<h1>Seances#index</h1>
-<p>Find me in app/views/seances/index.html.erb</p>
+
+<div class="card-box">
+    <h4 class="header-title m-t-0">Mes Seances</h4>
+    <p class="text-muted m-b-25 font-13">
+        Selectionner mes seances
+    </p>
+
+    <table class="table mb-0 table-responsive">
+        <thead>
+        <tr>
+            <th>Oeil</th>
+            <th>Date</th>
+            <th>Heure</th>
+            <th>Nom du programme</th>
+            <th>Statut</th>
+            <th>Completion (%)</th>
+            <th>Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @seances.each do |seance| %>
+        <tr class="row-seance">
+            <td><%= link_to '<i class="fa fa-eye icon-open-show-seance" aria-hidden="true">'.html_safe, training_seance_path(seance.training, seance) %></td>
+            <td><%= seance.date.to_formatted_s(:short).first(6)  %></td>
+            <td><%= seance.date.to_formatted_s(:time)   %></td>
+            <td><%= seance.training.name %></td>
+            <td>
+            <%= if seance.completion_filled? %>
+            
+            <% else %> 
+            
+            
+            </td>
+            <td></td>
+            <td><%= seance.percent %></td>
+            <td><%= link_to '<i class="fa fa-trash-o icon-delete-seance" aria-hidden="true">'.html_safe, training_seance_path(seance.training, seance), method: :delete %></td>
+        </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>
+
+<% content_for(:after_js) do %>
+    <% javascript_pack_tag 'index_seances'%>
+<% end %>
+

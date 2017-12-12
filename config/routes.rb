@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :trainings, only: [:index, :new, :create, :edit, :update, :destroy] do
     resources :series, only: [:create, :update]
-    resources :seances, only: [:index, :show, :create, :delete]
+    resources :seances, only: [:index, :show, :create, :destroy]
   end
 
   resources :series, only: [:destroy]
