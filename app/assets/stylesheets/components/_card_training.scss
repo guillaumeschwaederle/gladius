@@ -1,16 +1,23 @@
-.card_relative {
-  position: relative;
+.title_programs {
+  margin-bottom: 30px
 }
 
-.card_icone {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  color: white
+.card_relative {
+  display: flex;
+  justify-content: space-around;
+}
+
+.goal {
+  font-size: 30px !important;
+  color: white;
+}
+
+.check {
+  font-size: 30px !important;
+  color: white;
 }
 
 .card_completion {
-  position: absolute;
   right: 55px;
   bottom: 3px;
 }
@@ -36,9 +43,12 @@ hr {
   margin-right: 30px
 }
 
-.card_training:hover {
-  background-color: #45505A;
+.card_training {
   color: white;
+  opacity: 0.65;
+  &:hover {
+    opacity: 1
+  }
 }
 
 .new-training-card {
