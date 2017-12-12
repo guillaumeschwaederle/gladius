@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     @profile.user = current_user
     if @profile.save
-      redirect_to profile_path(@profile)
+      redirect_to trainings_path(@training)
     else
       render :new
     end
