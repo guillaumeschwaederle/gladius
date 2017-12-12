@@ -92,11 +92,6 @@ trainings.forEach(function(training) {
   });
 });
 
-
-
-
-
-
 //// /////////////////////////// ----------------------------------------------------------------------
 const completion = (id, goal) => {
   return `<div class="cards_modif">

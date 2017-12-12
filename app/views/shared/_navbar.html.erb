@@ -2,7 +2,7 @@
 <header id="topnav">
     <div class="topbar-main">
         <div class="container-fluid">
-
+            
                 <!-- Image Logo -->
             <%= link_to trainings_path, class: "logo" do %>
               <div class="logo">
@@ -94,19 +94,21 @@
             <div id="navigation">
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu">
-
-                    <li class="has-submenu">
+                    <li class="">
                       <%= link_to "Dashboard", trainings_path, class: "ti-home"%>
                     </li>
-
-                    <li class="has-submenu">
+                    <li class="">
+                      <%= link_to "Créer votre programme", new_training_path, class: "ti-home" %>
+                    </li>
+                    
+                    <%# <li class="has-submenu">
                         <a href="#"><i class="ti-paint-bucket"></i>My programs
                       </a>
                         <ul class="submenu">
                             <li><a href="ui-buttons.html">Buttons</a></li>
                             <li><a href="ui-cards.html">Cards</a></li>
                         </ul>
-                    </li>
+                    </li> %>
                 </ul>
                 <!-- End navigation menu -->
             </div> <!-- end #navigation -->
