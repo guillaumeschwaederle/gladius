@@ -2,6 +2,8 @@ class Serie < ApplicationRecord
   belongs_to :exercice
   belongs_to :training
 
+  has_many :completions
+
   validates :goal, presence: true
 
   def completion

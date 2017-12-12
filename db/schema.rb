@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171206175037) do
+ActiveRecord::Schema.define(version: 20171212135004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20171206175037) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
+
+  create_table "completions", force: :cascade do |t|
+    t.integer "done"
+    t.bigint "serie_id"
+    t.bigint "seance_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seance_id"], name: "index_completions_on_seance_id"
+    t.index ["serie_id"], name: "index_completions_on_serie_id"
   end
 
   create_table "exercices", force: :cascade do |t|
@@ -51,9 +61,16 @@ ActiveRecord::Schema.define(version: 20171206175037) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "seances", force: :cascade do |t|
+    t.datetime "date"
+    t.bigint "training_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["training_id"], name: "index_seances_on_training_id"
+  end
+
   create_table "series", force: :cascade do |t|
     t.integer "goal"
-    t.integer "done"
     t.bigint "exercice_id"
     t.bigint "training_id"
     t.datetime "created_at", null: false
@@ -95,7 +112,10 @@ ActiveRecord::Schema.define(version: 20171206175037) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "completions", "seances"
+  add_foreign_key "completions", "series", column: "serie_id"
   add_foreign_key "profiles", "users"
+  add_foreign_key "seances", "trainings"
   add_foreign_key "series", "exercices"
   add_foreign_key "series", "trainings"
   add_foreign_key "trainings", "profiles"
