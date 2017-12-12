@@ -2,6 +2,11 @@
 <div class="content dashboard-programs-section">
   <div class="container text-center">
     <h1 class="title_programs"> Mes Programmes </h1>
+      <div class="row btn-programs">
+        <%= link_to new_training_path do %>
+          <button class="btn btn-outline-primary btn-block">Créer votre programme</button>
+        <% end %>
+      </div>
       <div class="row list_training">
          <%-# render 'shared/card_training' %>
          <% @trainings.order('updated_at desc').each do |training| %>
