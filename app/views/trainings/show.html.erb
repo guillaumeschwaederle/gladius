@@ -4,32 +4,40 @@
       <h1>Votre programme : "<%= @training.name %>"</h1>
     </div>
       <%= render 'seances/table_index_seances', seances: @seances %>
-    <h2 class="sous-title text-center">Ajouter "<%= @training.name %>" à une autre séance</h2>
-      <center><p>Choisissez une ou plusieurs dates pour votre séance: <input type="date" id="datepicker"></p></center>
-        <h2 class="sous-title text-center">Rappel de mon programme</h2>
-      <div class="row justify-content-center">
-        <div class="col-8">
-          <div class="card-box">
-            <table class="tableau">
-              <thead>
-                <tr class="toto">
-                  <th>Exercice</th>
-                  <th>Objectif</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @training.series.each do |serie| %>
-                <tr class="toto">
-                  <td><%= serie.exercice.name %></td>
-                  <td><%= serie.goal %></td>
-                <% end %>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+      <h2 class="sous-title text-center">Ajouter "<%= @training.name %>" à une autre séance</h2>
+    <%= simple_form_for training_seances_path(@training, Seance.new), method: :post do |f| %>
+      <div class="form_seance row text-center">
+        <%= f.label :date, label: "A quand votre prochaine séance ?", class: "col-3 col-form-label" %>
+        <%= f.datetime_field :date, placeholder: DateTime.now, class: "form-control datepicker-inline col-5", label: false %>
+        <%= f.submit "Créer ma séance", class: "btn btn-outline-success btn-lg btn-margin-left-right col-3" %>
       </div>
-      <center><a><%= link_to "Supprimer ce programme", training_path(@training), class:"btn btn-outline-danger btn-rounded", method: :delete, data: { confirm: "Êtes-vous sur/e de vouloir supprimer ce programme? (Cette action est irréversible)" }%></a></center>
+    <% end %>
   </div>
+
+  <h2 class="sous-title text-center">Rappel de mon programme</h2>
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="card-box">
+        <table class="tableau">
+          <thead>
+            <tr class="toto">
+              <th>Exercice</th>
+              <th>Objectif</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @training.series.each do |serie| %>
+            <tr class="toto">
+              <td><%= serie.exercice.name %></td>
+              <td><%= serie.goal %></td>
+            <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <center><a><%= link_to "Supprimer ce programme", training_path(@training), class:"btn btn-outline-danger btn-rounded", method: :delete, data: { confirm: "Êtes-vous sur/e de vouloir supprimer ce programme? (Cette action est irréversible)" }%></a></center>
 </div>
+
 
