@@ -8,6 +8,7 @@ class SeancesController < ApplicationController
   end
 
   def show
+    @completion = Completion.new
   end
 
   def create

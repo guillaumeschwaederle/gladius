@@ -13,3 +13,19 @@
 .card-title {
   height: 75px
 }
+
+.line_complet {
+  display: flex;
+  margin: 10px;
+  justify-content: space-around
+}
+
+.card_line {
+  display: flex;
+  text-align: center;
+
+}
+
+.card_progress {
+  margin: 20px
+}
