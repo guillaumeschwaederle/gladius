@@ -13,7 +13,6 @@ class ExercicesController < ApplicationController
     @exercice = Exercice.new(exercice_params)
     @exercice.category = 'Exercice personnel'
     if @exercice.save
-      fail
       redirect_to exercices_path
     else
       render :new
