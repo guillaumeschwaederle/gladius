@@ -3,7 +3,7 @@
   <div class="cards_modif card_compl">
     <div class="col-6">
       <p class="card-text">
-        <i class="fa fa-bullseye fa-2x" aria-hidden="true"></i>  : <%= serie.goal %>
+        <i class="fa fa-bullseye fa-2x" aria-hidden="true"></i>  <%= serie.goal %>
       </p>
     </div>
     <input type="hidden" value="<%= serie.id %>" name="serie<%= x %>[id]">
@@ -17,11 +17,12 @@
             value="<%= serie.goal %>"
             name="serie<%= x %>[done]"
             data-bts-min="0"
-            data-bts-max="100"
+            data-bts-max="10"
+            value="10"
             min="0"
             data-bts-step="1"
             data-bts-decimal="0"
-            data-bts-step-interval="100"
+            data-bts-step-interval="10"
             data-bts-force-step-divisibility="round"
             data-bts-step-interval-delay="500"
             data-bts-booster="true"
@@ -31,7 +32,7 @@
             data-bts-mousewheel="true"
             data-bts-button-down-class="btn btn-default"
             data-bts-button-up-class="btn btn-default"
-            class="form-control"
+            class="form-control input-rep"
           style="display: block;">
           <span class="input-group-btn">
           <button class="btn btn-primary bootstrap-touchspin-up card-plus "

@@ -1,9 +1,10 @@
 <div class="container-title">
-  <style type="text/css">
+<!--   <style type="text/css">
   .container-title {
     margin: 35px;
   }
-  </style>
+  </style> -->
+
   <h1 class="text-center"><%= @seance.training.name %></h1>
 </div>
 <div class="container">
@@ -25,3 +26,6 @@
 
 
 
+<% content_for(:after_js) do %>
+    <% javascript_pack_tag 'completion'%>
+<% end %>
