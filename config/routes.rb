@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   resources :series, only: [:destroy]
 
+  resources :exercices, only: [:index, :new, :create, :edit, :update, :destroy]
+
   resources :profiles, only: [:new, :create, :show, :edit, :update]
 
   root to: "pages#home"
