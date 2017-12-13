@@ -1,11 +1,22 @@
 <% content_for :meta_title, "#{DEFAULT_META["meta_product_name"]} - Mes exercices" %>
   <% @categories =  @exercices.map { |e| e.category }.uniq %>
-  <div class="container text-center">
-     <h1 class="title_programs"> Mes Exercices </h1>
-      <div class="row btn-programs">
-          <%= link_to new_exercice_path do %>
-            <button class="btn btn-outline-primary btn-block">Créer un exercice</button>
-          <% end %>
+  <div class="container-fluid">
+  <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="btn-group pull-right">
+                        <ol class="breadcrumb hide-phone p-0 m-0">
+                            <li class="breadcrumb-item"><a href="#">
+                            <%= link_to new_exercice_path do %>
+                              <button class="btn btn-outline-primary btn-block">Créer un exercice</button>
+                            <% end %>
+                            </a></li>
+                            
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Mes Exercices</h4>
+                </div>
+            </div>
         </div>
         <% @categories.each do |cat| %>
           <div class= "title-left-layout underline-title">
