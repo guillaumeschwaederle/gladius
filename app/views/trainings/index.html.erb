@@ -2,22 +2,22 @@
 
   <div class="container-fluid ">
     <div class="row">
-                    <div class="col-sm-12">
-                        <div class="page-title-box">
-                            <div class="btn-group pull-right">
-                                <ol class="breadcrumb hide-phone p-0 m-0">
-                                    <li>
-                                    <%= link_to new_training_path do %>
-                                        <button class="btn btn-outline-primary btn-block">Créer votre programme</button>
-                                        <% end %></li>
-                                    <li class="breadcrumb-item active"></li>
-                                </ol>
-                            </div>
-                            <h4 class="page-title">Mes programmes</h4>
-                        </div>
-                    </div>
-                </div>
-      
+      <div class="col-sm-12">
+          <div class="page-title-box">
+              <div class="btn-group pull-right">
+                  <ol class="breadcrumb hide-phone p-0 m-0">
+                      <li>
+                      <%= link_to new_training_path do %>
+                          <button class="btn btn-outline-primary btn-block">Créer votre programme</button>
+                          <% end %></li>
+                      <li class="breadcrumb-item active"></li>
+                  </ol>
+              </div>
+              <h4 class="page-title">Mes programmes</h4>
+          </div>
+      </div>
+  </div>
+
       <div class="row list_training text-center">
          <%-# render 'shared/card_training' %>
          <% @trainings.order('updated_at desc').each do |training| %>
