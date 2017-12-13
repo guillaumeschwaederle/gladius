@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   resources :profiles, only: [:new, :create, :show, :edit, :update]
 
+  resources :exercices, only: [:index, :new, :create, :edit, :update, :destroy]
+
   root to: "pages#home"
 
   match "/404", :to => "errors#not_found", :via => :all
