@@ -1,0 +1,10 @@
+<%= simple_form_for @exercice do |f| %>
+<div class="row form-profil">
+  <div class="col-offset-2 col-5">
+    <%= f.input :name, placeholder: "Pompes sur une main", label: "Nom de l'exercice" %>
+    <%= f.input :description, placeholder: "Ajoutez des précisions sur votre exercice si nécessaire", label: "Description" %>
+  </div>
+  <div class="row sub_form">
+    <%= f.submit "Créer mon exercice", class: "btn btn-outline-primary btn-block" %>
+  </div>
+<% end %>
