@@ -1,5 +1,5 @@
 <% content_for :meta_title, "#{DEFAULT_META["meta_product_name"]} - Mes exercices" %>
-  <% @categories =  @exercices.order('created_at').map { |e| e.category }.uniq %>
+  <% @categories =  @exercices.map { |e| e.category }.uniq %>
   <div class="container text-center">
      <h1 class="title_programs"> Mes Exercices </h1>
       <div class="row btn-programs">
