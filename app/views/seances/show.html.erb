@@ -1,40 +1,34 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="page-title-box">
-                <div class="btn-group pull-right">
-                    <ol class="breadcrumb hide-phone p-0 m-0">
-                      <li class="breadcrumb-item">
-                      <%= link_to "Dashboard", seances_path%>
-                      </li>
-                      <li class="breadcrumb-item">
-                      <%= link_to "Mes Seances", seances_path%>
-                      </li>
-                      <li class="breadcrumb-item active"><%= @seance.training.name %></li>
-                    </ol>
-                </div>
-                <h4 class="page-title"><%= @seance.training.name %></h4>
-            </div>
-        </div>
-    </div>
-
-    <%= simple_form_for seance_completions_path(@seance), method: :post do |f| %>
-      <% x = 0 %>
-      <div class="row">
-        <% @seance.training.series.group_by().each do |serie| %>
-          <div class="col-4">
-            <%= render 'card_completion', serie: serie, x: x %>
+  <div class="row">
+          <div class="col-sm-12">
+              <div class="page-title-box">
+                  <div class="btn-group pull-right">
+                      
+                  </div>
+                  <h4 class="page-title"><%= @seance.training.name %></h4>
+              </div>
           </div>
-          <% x += 1 %>
-        <% end %>
       </div>
-      <div class="row">
-        <%= f.button :submit, class: "btn btn-outline-success", value: "Compléter ma séance" %>
+  </div>
+<div class="container-fluid">
+  <%= simple_form_for seance_completions_path(@seance), method: :post do |f| %>
+    <% x = 0 %>
+    <div class="row">
+      <% @seance.training.series.group_by().each do |serie| %>
+        <div class="col-4">
+          <%= render 'card_completion', serie: serie, x: x %>
+        </div>
+        <% x += 1 %>
+      <% end %>
+    </div>
+    <div class="row">
+    <div class="offset-4-4">
+      <%= f.button :submit, class: "btn btn-outline-success btn-lg", value: "Compléter ma séance" %>
       </div>
-    <% end %>
-
+    </div>
+  <% end %>
 </div>
-
+</div>
 
 <% content_for(:after_js) do %>
     <% javascript_pack_tag 'completion'%>

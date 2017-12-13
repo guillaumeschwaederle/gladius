@@ -1,10 +1,11 @@
 <div class="card m-b-20 card-body card_height text-xs-center">
   <h3 class="card-title serie_name"><%= serie.exercice.name %></h3>
+   <p class="card-text">
+        Objectif:  <%= serie.goal %>
+      </p>
   <div class="cards_modif card_compl">
     <div class="col-6">
-      <p class="card-text">
-        <i class="fa fa-bullseye fa-2x" aria-hidden="true"></i>  <%= serie.goal %>
-      </p>
+     
     </div>
     <input type="hidden" value="<%= serie.id %>" name="serie<%= x %>[id]">
     <div class="form-group card_series col-6">
