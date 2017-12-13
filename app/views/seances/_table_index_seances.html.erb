@@ -30,11 +30,12 @@
                     <td><%= seance.percent %></td>
                     <td><%= link_to '<i class="fa fa-trash-o icon-delete-seance" aria-hidden="true">'.html_safe, training_seance_path(seance.training, seance), method: :delete %></td>
                 </tr>   
+
         <% end %>
         </tbody>
     </table>
 </div>
-
 <% content_for(:after_js) do %>
-    <% javascript_pack_tag 'index_seances'%>
+    <%= javascript_pack_tag 'index_seances'%>
 <% end %>
+
