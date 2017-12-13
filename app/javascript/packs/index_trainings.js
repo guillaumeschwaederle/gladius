@@ -174,8 +174,6 @@ function increment_on_moins() {
     });
 };
 
-
-
 // DELETE BUTTON START
 const deleteButtons = document.querySelectorAll('.delete-program-from-index');
 
