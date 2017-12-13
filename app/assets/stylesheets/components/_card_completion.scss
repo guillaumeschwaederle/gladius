@@ -1,7 +1,9 @@
 .card_compl {
   display: flex;
   text-align: center;
-  align-content: center
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .card_height {
