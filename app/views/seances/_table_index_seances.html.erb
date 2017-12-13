@@ -28,7 +28,8 @@
                         <td><span class="badge badge-warning">A faire</span></td>
                     <% end %>
                     <td><%= seance.percent %></td>
-                    <td><%= link_to '<i class="fa fa-trash-o icon-delete-seance" aria-hidden="true">'.html_safe, seance_path(seance), method: :delete %></td>
+                    <td><%= link_to '<i class="fa fa-trash-o icon-delete-seance" aria-hidden="true">'.html_safe, seance_path(seance), method: :delete,
+      data: { confirm: "Veuillez confirmez la suppression de la séance" } %></td>
                 </tr>   
 
         <% end %>
