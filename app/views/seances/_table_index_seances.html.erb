@@ -17,7 +17,7 @@
         </tr>
         </thead>
         <tbody>
-        <% @seances.each do |seance| %>
+        <% seances.each do |seance| %>
         <tr class="row-seance">
             <td><%= link_to '<i class="fa fa-eye icon-open-show-seance" aria-hidden="true">'.html_safe, training_seance_path(seance.training, seance) %></td>
             <td><%= seance.date.to_formatted_s(:short).first(6)  %></td>
@@ -37,5 +37,6 @@
 </div>
 
 <% content_for(:after_js) do %>
-    <% javascript_pack_tag 'index_seances'%>
+    <%= javascript_pack_tag 'index_seances'%>
 <% end %>
+

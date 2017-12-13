@@ -31,6 +31,7 @@ class TrainingsController < ApplicationController
   end
 
   def show
+    @seances = @training.seances
   end
 
   def edit
@@ -70,6 +71,7 @@ class TrainingsController < ApplicationController
 
   def destroy
     @training.destroy
+    redirect_to trainings_path
   end
 
   private
