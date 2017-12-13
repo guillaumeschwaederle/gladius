@@ -1,53 +1,25 @@
-<h1 class="text-center"><%= @seance.training.name %></h1>
-
+<div class="container-title">
+  <style type="text/css">
+  .container-title {
+    margin: 35px;
+  }
+  </style>
+  <h1 class="text-center"><%= @seance.training.name %></h1>
+</div>
 <div class="container">
   <%= simple_form_for training_seance_completions_path(@seance.training, @seance), method: :post do |f| %>
     <% x = 0 %>
-    <% @seance.training.series.each do |serie| %>
-      <div class="card m-b-20 card-body text-xs-center">
-        <h5 class="card-title serie_name"><%= serie.exercice.name %></h5>
-        <p class="card-text">
-          Objectif de : <%= serie.goal %>
-        </p>
-        <div class="cards_modif">
-          <input type="hidden" value="<%= serie.id %>" name="serie<%= x %>[id]">
-          <div class="form-group card_series">
-            <div class="input-group bootstrap-touchspin ">
-              <span class="input-group-btn">
-                <button class="btn btn-primary bootstrap-touchspin-down card-moins" type="button">-</button></span>
-                <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
-                <input id="input"
-                  type="text"
-                  value="<%= serie.goal %>"
-                  name="serie<%= x %>[done]"
-                  data-bts-min="0"
-                  data-bts-max="100"
-                  min="0"
-                  data-bts-step="1"
-                  data-bts-decimal="0"
-                  data-bts-step-interval="100"
-                  data-bts-force-step-divisibility="round"
-                  data-bts-step-interval-delay="500"
-                  data-bts-booster="true"
-                  data-bts-boostat="<%= serie.goal %>"
-                  data-bts-min-boostat="0"
-                  data-bts-max-boosted-step="false"
-                  data-bts-mousewheel="true"
-                  data-bts-button-down-class="btn btn-default"
-                  data-bts-button-up-class="btn btn-default"
-                  class="form-control"
-                style="display: block;">
-                <span class="input-group-btn">
-                <button class="btn btn-primary bootstrap-touchspin-up card-plus "
-                    type="button">+</button>
-              </span>
-            </div>
-          </div>
+    <div class="row">
+      <% @seance.training.series.group_by().each do |serie| %>
+        <div class="col-4">
+          <%= render 'card_completion', serie: serie, x: x %>
         </div>
-      </div>
-      <% x += 1 %>
-    <% end %>
-    <%= f.button :submit %>
+        <% x += 1 %>
+      <% end %>
+    </div>
+    <div class="row">
+      <%= f.button :submit, class: "btn btn-outline-success", value: "Compléter ma séance" %>
+    </div>
   <% end %>
 </div>
 
