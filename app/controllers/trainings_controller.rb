@@ -1,19 +1,8 @@
 class TrainingsController < ApplicationController
-  before_action :set_training, only: [:edit, :update, :destroy]
+  before_action :set_training, only: [:show, :edit, :update, :destroy]
 
   def index
-    @trainings = current_user.profile.trainings
-    @series_training = Serie.all.group_by { |s| s.training.id }
-    gon.trainings = @trainings
-    @exercices = Exercice.all
-    gon.series_training = @series_training
-    gon.series_exercice = @series_exercice
-    gon.exercices = @exercices
-    @ratio_total = 0
-    @completion_total = 0
-    @total = 0
-    @token = session[:_csrf_token]
-    gon.token = @token
+    @trainings = Training.all
   end
 
 
@@ -39,6 +28,10 @@ class TrainingsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @seances = @training.seances
   end
 
   def edit
@@ -78,6 +71,7 @@ class TrainingsController < ApplicationController
 
   def destroy
     @training.destroy
+    redirect_to trainings_path
   end
 
   private
