@@ -111,12 +111,17 @@
                             <%= link_to "Voir mes Programmes", trainings_path, class: "ti-home" %>
                         </li>
                         <li class="">
-                            <%= link_to "Créer votre Programme", new_training_path, class: "ti-home" %>
+                            <%= link_to "Créez votre Programme", new_training_path, class: "ti-home" %>
                         </li>
                       </ul>
                     </li>
-                     <li class="">
+                     <li class="has-submenu">
                       <%= link_to "Mes Exercices", "#", class: "ti-home" %>
+                      <ul class="submenu">
+                         <li class="">
+                            <%= link_to "Créer un nouvel exercice", new_exercice_path, class: "ti-home" %>
+                        </li>
+                      </ul>
                     </li>
                     <%# <li class="has-submenu">
                         <a href="#"><i class="ti-paint-bucket"></i>My programs
