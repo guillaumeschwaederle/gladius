@@ -25,11 +25,8 @@
             <td><%= seance.date.to_formatted_s(:time)   %></td>
             <td><%= seance.training.name %></td>
             <td>
-            <%= if seance.completion_filled? %>
-            
-            <% else %> 
-            
-            
+            <%#  <%= if seance.completion_filled? %>
+
             </td>
             <td></td>
             <td><%= seance.percent %></td>
