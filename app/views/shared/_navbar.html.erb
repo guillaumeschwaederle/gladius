@@ -2,12 +2,19 @@
 <header id="topnav">
     <div class="topbar-main">
         <div class="container-fluid">
-            
-                <!-- Image Logo -->
-            <%= link_to trainings_path, class: "logo" do %>
-              <div class="logo">
-              <%= cl_image_tag "logo-gladius-dark-grey.png", height: "42", class:"logo-lg" %>
-              </div>
+            <!-- Image Logo -->
+            <% if current_user %>
+              <%= link_to seances_path, class: "logo" do %>
+                <div class="logo">
+                  <%= cl_image_tag "logo-gladius-dark-grey.png", height: "42", class:"logo-lg" %>
+                </div>
+              <% end %>
+            <% else %>
+              <%= link_to :root, class: "logo" do %>
+                <div class="logo">
+                  <%= cl_image_tag "logo-gladius-dark-grey.png", height: "42", class:"logo-lg" %>
+                </div>
+              <% end %>
             <% end %>
             <!-- End Logo container-->
 
@@ -95,12 +102,22 @@
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu">
                     <li class="">
-                      <%= link_to "Dashboard", trainings_path, class: "ti-home"%>
+                      <%= link_to "Dashboard", seances_path, class: "ti-home"%>
                     </li>
-                    <li class="">
-                      <%= link_to "Créer votre programme", new_training_path, class: "ti-home" %>
+                    <li class="has-submenu">
+                      <%= link_to "Mes Programmes", trainings_path, class: "ti-home" %>
+                      <ul class="submenu">
+                        <li class="">
+                            <%= link_to "Voir mes Programmes", trainings_path, class: "ti-home" %>
+                        </li>
+                        <li class="">
+                            <%= link_to "Créer votre Programme", new_training_path, class: "ti-home" %>
+                        </li>
+                      </ul>
                     </li>
-                    
+                     <li class="">
+                      <%= link_to "Mes Exercices", "#", class: "ti-home" %>
+                    </li>
                     <%# <li class="has-submenu">
                         <a href="#"><i class="ti-paint-bucket"></i>My programs
                       </a>
