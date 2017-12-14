@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <% seances.sort_by {|obj| obj.date}.each do |seance| %>
+            <% seances.sort_by {|obj| obj.date}.reverse.each do |seance| %>
                     <tr class="row-seance">
                         <td><center><%= link_to '<i class="fa fa-eye icon-open-show-seance" aria-hidden="true">'.html_safe, seance_path(seance) %></center></td>
                         <td><%= seance.date.to_formatted_s(:short).first(6)  %></td>
