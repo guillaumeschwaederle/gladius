@@ -1,15 +1,15 @@
 <div class="container-fluid">
-   <div class="row">
-      <div class="col-sm-12">
-         <div class="page-title-box">
-            <div class="btn-group pull-right">
-               <ol class="breadcrumb hide-phone p-0 m-0">
-                  <li>Tu ne connais pas tes limites avant de les avoir dépassées</li>
-               </ol>
-            </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <div class="btn-group pull-right">
+                    <ol class="breadcrumb hide-phone p-0 m-0">
+                        <li>Tu ne connais pas tes limites avant de les avoir dépassées</li>
+                    </ol>
+                </div>
             <h4 class="page-title">Mon Dashboard</h4>
-         </div>
-      </div>
+            </div>
+        </div>
    </div>
    <div class="row">
       <%= render 'shared/card_stat', percent: @percent_seances, nombre: @total_seances_done, text: "Séances réalisées"%>
@@ -21,7 +21,7 @@
             <p class="text-muted mb-0">Nombre moyen de séries par séance</p>
          </div>
       </div>
-      <div class="row">
+      
          <div class="col-lg-6">
             <%= render 'table_index_seances' %>
          </div>
@@ -30,7 +30,7 @@
             <%= render 'table_index_seances' %>
          </div>
          <!-- end col -->
-      </div>
+      
    </div>
 </div>
 <% content_for(:after_js) do %>

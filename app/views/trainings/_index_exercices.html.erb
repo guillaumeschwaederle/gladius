@@ -1,9 +1,12 @@
 
 
 <% @categories = @exercices.map { |e| e.category  }.uniq %>
-
 <% ind = @categories.find_index("Exercice personnel") %>
-<%  @categories.insert(0, @categories.delete(@categories[ind])) %>
+<% if ind %>
+  <%  @categories.insert(0, @categories.delete(@categories[ind])) %>
+<% else %>
+<%  @categories.insert(0, "Exercice personnel") %>
+<% end %>
 <% @categories.each { |c| } %>
 <div class="container">
   <% @categories.each do |cat| %>
