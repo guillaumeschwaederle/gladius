@@ -5,7 +5,7 @@
     </div>
       <%= render 'seances/table_index_seances', seances: @seances %>
       <h2 class="sous-title text-center">Ajouter "<%= @training.name %>" à une autre séance</h2>
-    <%= simple_form_for training_seances_path(@training, Seance.new), method: :post do |f| %>
+    <%= simple_form_for Seance.new, training_seances_path(@training), method: :post do |f| %>
       <div class="form_seance row text-center">
         <%= f.label :date, label: "A quand votre prochaine séance ?", class: "col-3 col-form-label" %>
         <%= f.datetime_field :date, placeholder: DateTime.now, class: "form-control datepicker-inline col-5", label: false %>
