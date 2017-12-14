@@ -14,7 +14,7 @@
         <div class="form_seance row text-center">
           <%= f.label :date, label: "A quand votre prochaine séance ?", class: "col-3 col-form-label" %>
           <%= f.datetime_field :date, placeholder: DateTime.now, class: "form-control datepicker-inline col-5", label: false %>
-          <%= f.submit "Créer ma séance", class: "btn btn-outline-success btn-lg btn-margin-left-right col-3" %>
+          <%= f.submit "Créer ma séance", class: "btn btn-outline-primary btn-lg btn-margin-left-right col-3" %>
         </div>
       <% end %>
     </div>
@@ -43,7 +43,7 @@
       </div>
     </div>
   </div>
-  <center><a><%= link_to "Supprimer ce programme", training_path(@training), class:"btn btn-outline-danger btn-rounded", method: :delete, data: { confirm: "Êtes-vous sur/e de vouloir supprimer ce programme? (Cette action est irréversible)" }%></a></center>
+  <center><a><%= link_to "Supprimer ce programme", training_path(@training), class:"btn btn-outline-danger btn-lg", method: :delete, data: { confirm: "Êtes-vous sur/e de vouloir supprimer ce programme? (Cette action est irréversible)" }%></a></center>
 </div>
 
 
