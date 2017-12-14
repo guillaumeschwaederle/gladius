@@ -18,6 +18,13 @@
                 </div>
             </div>
         </div>
+                <% @categories = @exercices.map { |e| e.category  }.uniq %>
+      <% ind = @categories.find_index("Exercice personnel") %>
+      <% if ind %>
+        <%  @categories.insert(0, @categories.delete(@categories[ind])) %>
+      <% else %>
+      <%  @categories.insert(0, "Exercice personnel") %>
+      <% end %>
         <% @categories.each do |cat| %>
           <div class= "title-left-layout underline-title">
             <h2><%= cat.capitalize %></h2>
