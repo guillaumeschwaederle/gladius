@@ -27,7 +27,6 @@ class ExercicesController < ApplicationController
 
   def destroy
     @exercice.destroy
-    redirect_to exercices_path
   end
 
   private

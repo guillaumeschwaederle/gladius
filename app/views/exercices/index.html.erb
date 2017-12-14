@@ -40,7 +40,7 @@
                   <div class= "card-footer text-muted">
                     Catégorie : <strong><%= cat.capitalize %></strong>
                     <% if cat == "Exercice personnel" %>
-                      <%= link_to 'Supprimer'.html_safe, exercice_path(exercice), method: :delete, data: { confirm: "Etes-vous sur(e) de vouloir supprimer cet exercice ?" }%>
+                      <%= link_to 'Supprimer'.html_safe, exercice_path(exercice), method: :delete, remote: true%>
                     <% end %>
                   </div>
                 </div>
@@ -50,3 +50,9 @@
         <% end %>
       </div>
 
+
+<% content_for(:after_js) do %>
+    <% javascript_pack_tag 'btn_suppression'%>
+<% end %>
+
+<!-- <i class="fa fa-trash-o"></i> -->
