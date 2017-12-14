@@ -1,1 +1,43 @@
-<%= render 'table_index_seances' %>
+<div class="container-fluid">
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <div class="btn-group pull-right">
+                    <ol class="breadcrumb hide-phone p-0 m-0">
+                        <li>Tu ne connais pas tes limites avant de les avoir dépasées</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Mon Dashboard</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <%= render 'shared/card_stat' %>
+        <%= render 'shared/card_stat' %>
+        <%= render 'shared/card_stat' %>
+        <%= render 'shared/card_stat' %>    
+    </div>
+<div class="row">
+    <div class="col-lg-6">
+        <%= render 'table_index_seances' %>
+    </div> <!-- end col -->
+    <div class="col-lg-6">
+        <%= render 'table_index_seances' %>
+    </div> <!-- end col -->
+</div>
+    
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $( document ).ready(function() {
+    $('.counter').counterUp({
+      delay: 100,
+      time: 1200
+    });
+    $('.circliful-chart').circliful();
+    });
+  <% end %>
+  <%= javascript_pack_tag 'index_trainings' %>
+<% end %>

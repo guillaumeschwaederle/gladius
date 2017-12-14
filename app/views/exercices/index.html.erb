@@ -1,0 +1,41 @@
+<% content_for :meta_title, "#{DEFAULT_META["meta_product_name"]} - Mes exercices" %>
+  <% @categories =  @exercices.map { |e| e.category }.uniq %>
+  <div class="container-fluid">
+  <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="btn-group pull-right">
+                        <ol class="breadcrumb hide-phone p-0 m-0">
+                            <li class="breadcrumb-item"><a href="#">
+                            <%= link_to new_exercice_path do %>
+                              <button class="btn btn-outline-primary btn-block">Créer un exercice</button>
+                            <% end %>
+                            </a></li>
+                            
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Mes Exercices</h4>
+                </div>
+            </div>
+        </div>
+        <% @categories.each do |cat| %>
+          <div class= "title-left-layout underline-title">
+            <h2><%= cat.capitalize %></h2>
+          </div>
+          <div class="row">
+            <% @exercices.where(category: cat).each do |exercice| %>
+              <div class="col-sm-4">
+                <div class="card m-b-20"  data-name="<%= exercice.name %>">
+                  <div class="card-body card-exercice-hover">
+                    <h2><%= exercice.name %> </h2>
+                      <p>  <%= exercice.description.first(120) + "..." %> </p>
+                  </div>
+                  <div class= "card-footer text-muted">
+                    Catégorie : <strong><%= exercice.category.capitalize %></strong>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>

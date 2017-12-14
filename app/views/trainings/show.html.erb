@@ -1,17 +1,23 @@
-<div class= "section" >
-  <div class="container trainings-show">
-    <div class= "title-training text-center">
-      <h1>Votre programme : "<%= @training.name %>"</h1>
-    </div>
-      <%= render 'seances/table_index_seances', seances: @seances %>
-      <h2 class="sous-title text-center">Ajouter "<%= @training.name %>" à une autre séance</h2>
-    <%= simple_form_for Seance.new, training_seances_path(@training), method: :post do |f| %>
-      <div class="form_seance row text-center">
-        <%= f.label :date, label: "A quand votre prochaine séance ?", class: "col-3 col-form-label" %>
-        <%= f.datetime_field :date, placeholder: DateTime.now, class: "form-control datepicker-inline col-5", label: false %>
-        <%= f.submit "Créer ma séance", class: "btn btn-outline-success btn-lg btn-margin-left-right col-3" %>
+<div class="container-fluid trainings-show">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class= "title-training text-center">
+        <h1>Les seances: "<%= @training.name %>"</h1>
       </div>
-    <% end %>
+        <%= render 'seances/table_index_seances', seances: @seances %>
+    </div>
+    <div class="col-lg-6">
+      <div class= "title-training text-center">
+        <h1>Ajouter "<%= @training.name %>" à une autre séance</h1>
+      </div>
+      <%= simple_form_for @seance, url: training_seances_path(@training), method: :post do |f| %>
+        <div class="form_seance row text-center">
+          <%= f.label :date, label: "A quand votre prochaine séance ?", class: "col-3 col-form-label" %>
+          <%= f.datetime_field :date, placeholder: DateTime.now, class: "form-control datepicker-inline col-5", label: false %>
+          <%= f.submit "Créer ma séance", class: "btn btn-outline-success btn-lg btn-margin-left-right col-3" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <h2 class="sous-title text-center">Rappel de mon programme</h2>
@@ -39,5 +45,7 @@
   </div>
   <center><a><%= link_to "Supprimer ce programme", training_path(@training), class:"btn btn-outline-danger btn-rounded", method: :delete, data: { confirm: "Êtes-vous sur/e de vouloir supprimer ce programme? (Cette action est irréversible)" }%></a></center>
 </div>
+
+
 
 

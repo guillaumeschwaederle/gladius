@@ -1,30 +1,45 @@
-<div class="container-title">
-<!--   <style type="text/css">
-  .container-title {
-    margin: 35px;
-  }
-  </style> -->
+<div class="container-fluid">
+  <div class="row">
+          <div class="col-sm-12">
+              <div class="page-title-box">
+                  <div class="btn-group pull-right">
 
-  <h1 class="text-center"><%= @seance.training.name %></h1>
-</div>
-<div class="container">
-  <%= simple_form_for seance_completions_path(@seance), method: :post do |f| %>
-    <% x = 0 %>
-    <div class="row">
-      <% @seance.training.series.group_by().each do |serie| %>
-        <div class="col-4">
-          <%= render 'card_completion', serie: serie, x: x %>
+                  </div>
+                  <h4 class="page-title"><%= @seance.training.name %></h4>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="container-fluid">
+    <%= simple_form_for @completion, url: seance_completions_path(@seance), method: :post do |f| %>
+      <% x = 0 %>
+      <div class="row">
+        <% if @seance.completions.empty? %>
+          <% @seance.training.series.group_by().each do |serie| %>
+            <div class="col-4">
+              <%= render 'card_completion', serie: serie, x: x %>
+            </div>
+            <% x += 1 %>
+          <% end %>
+        <% else %>
+          <% @seance.completions.each do |completion| %>
+            <div class="col-4">
+              <%= render 'card_progress', serie: completion.serie, x: x, completion: completion %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <% if @seance.completions.empty? %>
+        <div class="row">
+          <div class="offset-4-4">
+            <%= f.input :seance, value: @seance, as: :hidden %>
+            <%= f.button :submit, class: "btn btn-outline-success btn-lg", value: "Compléter ma séance" %>
+          </div>
         </div>
-        <% x += 1 %>
       <% end %>
-    </div>
-    <div class="row">
-      <%= f.button :submit, class: "btn btn-outline-success", value: "Compléter ma séance" %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
-
-
 
 <% content_for(:after_js) do %>
     <% javascript_pack_tag 'completion'%>
