@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    
+
     <div class="row">
         <div class="col-sm-12">
             <div class="page-title-box">
@@ -13,10 +13,10 @@
         </div>
     </div>
     <div class="row">
-        <%= render 'shared/card_stat' %>
-        <%= render 'shared/card_stat' %>
-        <%= render 'shared/card_stat' %>
-        <%= render 'shared/card_stat' %>    
+        <%= render 'shared/card_stat', percent: @stat_trainings, nombre: @stat_trainings, text: "Complétion des Programmes" %>
+        <%= render 'shared/card_stat', percent: @stat_seances, nombre: @nb_seances, text: "Complétion des Séances"%>
+        <%= render 'shared/card_stat', percent: 20, nombre: 20, text: "cacahuette"%>
+        <%= render 'shared/card_stat', percent: 30, nombre: 30, text: "mamelles"%>
     </div>
 <div class="row">
     <div class="col-lg-6">
@@ -26,7 +26,7 @@
         <%= render 'table_index_seances' %>
     </div> <!-- end col -->
 </div>
-    
+
 </div>
 
 <% content_for(:after_js) do %>
