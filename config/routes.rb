@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   get 'errors/internal_server_error'
 
   ActiveAdmin.routes(self)
-  resources :trainings, only: [:show, :index, :new, :create, :edit, :update, :destroy] do
-    resources :series, only: [:create, :update]
+  resources :trainings, only: [:show, :index, :new, :create, :destroy] do
     resources :seances, only: [:create]
+    resources :series, only: [:create, :update]
   end
 
   resources :seances, only: [:index, :show, :destroy] do

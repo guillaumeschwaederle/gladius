@@ -1,6 +1,6 @@
 class SeancesController < ApplicationController
   before_action :set_training, only: [:create]
-  before_action :set_seance, only: [:show, :create, :destroy]
+  before_action :set_seance, only: [:show, :destroy]
 
 
   def index
@@ -19,6 +19,12 @@ class SeancesController < ApplicationController
   end
 
   def create
+    @seance = Seance.new(seance_params)
+    @seance.training = @training
+    @seance.date = DateTime.parse(params[:seance][:date])
+    if @seance.save
+      redirect_to seances_path
+    end
   end
 
   def destroy
@@ -26,6 +32,7 @@ class SeancesController < ApplicationController
   end
 
   private
+  ################ private ###################
 
   def set_seance
     @seance = Seance.find(params[:id])
@@ -34,6 +41,12 @@ class SeancesController < ApplicationController
   def set_training
     @training = Training.find(params[:training_id])
   end
+
+  def seance_params
+    params.require(:seance).permit(:date)
+  end
+
+################### Stat #######################
 
   def trainings_completion
     arr = []
@@ -93,9 +106,5 @@ class SeancesController < ApplicationController
       end
     end
     (arr.sum / arr.count).round(1)
-  end
-
-  def favorite_training
-
   end
 end
