@@ -11,7 +11,7 @@
         <h2><%= cat.capitalize %></h2>
       </div>
       <div class="row">
-        <% @exercices.where(category: cat).each do |exercice| %>
+        <% @exercices.select{ |ex| ex.category == cat }.each do |exercice| %>
           <div class="col-sm-4 exercices-cards-searched">
             <div class="card m-b-20"  data-name="<%= exercice.name %>">
               <div class="card-body card-exercice-hover">
