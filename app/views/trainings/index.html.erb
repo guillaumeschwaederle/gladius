@@ -1,6 +1,6 @@
 <% content_for :meta_title, "#{DEFAULT_META["meta_product_name"]} - Mon tableau de bord" %>
-<div class="container-fluid">
   <% if current_user.profile.trainings.empty? %>
+  <div class="container-fluid">
     <h2 class="title-profil"><center>Vous n'avez pas encore de programmes.</center></h2>
         <%= link_to new_training_path do %>
           <center><button class="btn btn-outline-primary ">Créer mon premier programme</button></center>
