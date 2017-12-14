@@ -4,7 +4,7 @@ class SeancesController < ApplicationController
 
 
   def index
-    @seances = Seance.all
+    @seances = current_user.profile.seances
     @stat_trainings = trainings_completion
     @stat_seances = seances_completion
     @nb_seances = total_seances

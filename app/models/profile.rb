@@ -5,6 +5,7 @@ class Profile < ApplicationRecord
   validates :last_name, presence: true
 
   has_many :trainings, dependent: :destroy
+  has_many :seances, through: :trainings
 
   mount_uploader :photo, PhotoUploader
 end

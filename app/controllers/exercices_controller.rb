@@ -10,8 +10,8 @@ class ExercicesController < ApplicationController
   end
 
   def create
+    @exercice = Exercice.new(exercice_params)
     @exercice.category = 'Exercice personnel'
-    @exercice = Exercice.new(exercice_params)  
     if @exercice.save
       redirect_to exercices_path
     else
