@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-6">
       <div class= "title-training text-center">
-        <h1>Les seances: "<%= @training.name %>"</h1>
+        <h1>Les séances: "<%= @training.name %>"</h1>
       </div>
         <%= render 'seances/table_index_seances', seances: @seances %>
     </div>
@@ -14,7 +14,7 @@
         <div class="form_seance row text-center">
           <%= f.label :date, label: "A quand votre prochaine séance ?", class: "col-3 col-form-label" %>
           <%= f.datetime_field :date, placeholder: DateTime.now, class: "form-control datepicker-inline col-5", label: false %>
-          <%= f.submit "Créer ma séance", class: "btn btn-outline-primary btn-lg btn-margin-left-right col-3" %>
+          <%= f.submit "Créer ma séance", id:"creer-seance-btn", class: "btn btn-outline-primary btn-lg btn-margin-left-right col-3" %>
         </div>
       <% end %>
     </div>
@@ -43,9 +43,12 @@
       </div>
     </div>
   </div>
-  <center><a><%= link_to "Supprimer ce programme", training_path(@training), class:"btn btn-outline-danger btn-lg", method: :delete, data: { confirm: "Êtes-vous sur/e de vouloir supprimer ce programme? (Cette action est irréversible)" }%></a></center>
+  <center><a><%= link_to "Supprimer ce programme", training_path(@training) ,class:"btn btn-outline-danger btn-lg", method: :delete, data: { confirm: "Êtes-vous sur/e de vouloir supprimer ce programme? (Cette action est irréversible)" }%></a></center>
 </div>
 
 
+<% content_for(:after_js) do %>
+    <% javascript_pack_tag 'show_training'%>
+<% end %>
 
 
