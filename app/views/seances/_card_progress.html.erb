@@ -1,0 +1,26 @@
+<div class="card m-b-20 card-body card_height text-xs-center">
+  <h3 class="card-title serie_name"><%= serie.exercice.name %></h3>
+    <div class="row line_complet">
+      <div class="card-text card_line">
+        <i class="fa fa-flag-checkered goal" aria-hidden="true"></i>
+        <p><%= serie.goal %></p>
+      </div>
+      <div class="card-text card_line">
+        <i class="fa fa-check check" aria-hidden="true"></i>
+        <p><%= completion.done %></p>
+      </div>
+    </div>
+    <br>
+  <div class="cards_modif card_compl">
+    <div class="form-group card_progress col-12">
+      <div class="progress m-b-20">
+      <% if completion.done > serie.goal %>
+        <div class="progress-bar bg-success" role="progressbar" style="width: <%= (serie.goal.to_f / completion.done * 100).round() %>%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar" role="progressbar" style="width: <%= ((completion.done - serie.goal.to_f) / completion.done * 100).round() %>%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+      <% else %>
+        <div class="progress-bar bg-success" role="progressbar" style="width: <%= (completion.done / serie.goal.to_f * 100).round() %>%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -23,7 +23,7 @@
                 <ul class="list-inline float-right mb-0 menu-top-gladius">
                     <div class="lines">
                       <%= link_to new_user_session_path, class: "ti-home" do %>
-                       <span class="text-muted text-nowrap m-b-10 white-text"> Se connecter</span>
+                       <span class="text-muted text-nowrap m-b-10 white-text text-space"> Se connecter</span>
                       <% end %>
                       <%= link_to new_user_registration_path, class: "ti-home" do %>
                        <span class="text-muted text-nowrap m-b-10  white-text">  S'inscrire</span>
@@ -94,6 +94,7 @@
         </div> <!-- end container -->
     </div>
     <!-- end topbar-main -->
+
 <% if current_user %>
   <% if current_user.profile %>
     <div class="navbar-custom">
@@ -115,8 +116,16 @@
                         </li>
                       </ul>
                     </li>
-                     <li class="">
-                      <%= link_to "Mes Exercices", "#", class: "ti-home" %>
+                     <li class="has-submenu">
+                      <%= link_to "Mes Exercices", exercices_path , class: "ti-home" %>
+                        <ul class="submenu">
+                          <li class="">
+                              <%= link_to "Voir mes Exercices", exercices_path, class: "ti-home" %>
+                          </li>
+                           <li class="">
+                              <%= link_to "Créer un nouvel exercice", new_exercice_path, class: "ti-home" %>
+                          </li>
+                        </ul>
                     </li>
                     <%# <li class="has-submenu">
                         <a href="#"><i class="ti-paint-bucket"></i>My programs
