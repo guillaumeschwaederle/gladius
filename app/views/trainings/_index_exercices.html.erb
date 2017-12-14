@@ -1,5 +1,4 @@
 
-
 <% @categories = @exercices.map { |e| e.category  }.uniq %>
 <% ind = @categories.find_index("Exercice personnel") %>
 <% if ind %>
@@ -24,7 +23,7 @@
             <div class= "card-footer text-muted">
               Catégorie : <strong><%= exercice.category.capitalize %></strong>
               <% if cat == "Exercice personnel" %>
-                <%= link_to 'Supprimer'.html_safe, exercice_path(exercice), method: :delete, remote: true %>
+                <%= link_to '<i class="fa fa-trash-o poubelle"></i>'.html_safe, exercice_path(exercice), method: :delete, remote: true %>
               <% end %>
             </div>
           </div>
