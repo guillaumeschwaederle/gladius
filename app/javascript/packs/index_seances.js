@@ -19,7 +19,6 @@ rows.forEach((row) => {
 
 rows.forEach((row) => {
     row.addEventListener('mouseover', (event) => {  
-        console.log("keke");
         row.classList.add("row-mouse-hover-effet");
     });
 });
@@ -29,3 +28,4 @@ rows.forEach((row) => {
         row.classList.remove("row-mouse-hover-effet");
     });
 });
+
