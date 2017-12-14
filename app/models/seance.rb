@@ -5,15 +5,19 @@ class Seance < ApplicationRecord
   has_many :series, through: :completions
 
   validates :date, presence: true
-  
+
   def percent
     sum_goal = 0
     sum_done = 0
-    self.completions.each do |completion|
-      sum_goal += completion.serie.goal
-      sum_done += completion.done
+    if self.completions.empty?
+      0
+    else
+      self.completions.each do |completion|
+        sum_goal += completion.serie.goal
+        sum_done += completion.done
+      end
+      sum_done / sum_goal.to_f
     end
-    sum_done / sum_goal.to_f
   end
 
   def completion_filled?
