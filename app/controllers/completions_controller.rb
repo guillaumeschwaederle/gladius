@@ -4,6 +4,7 @@ class CompletionsController < ApplicationController
     @seance = Seance.find(params['seance_id'])
     @series.each do |serie|
       completion = Completion.new(serie: Serie.find(serie['id']), done: serie['done'], seance: @seance)
+      completion.save!
     end
     redirect_to @seance
   end
