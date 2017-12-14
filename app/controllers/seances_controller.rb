@@ -14,7 +14,11 @@ class SeancesController < ApplicationController
     @percent_done = percent_done
     @total_done = total_done
     @total_seances_done = total_seances_done
-    @percent_seances = (@total_seances_done / total_seances.to_f * 100).round(1)
+    if total_seances == 0
+      @percent_seances = 0
+    else
+      @percent_seances = (@total_seances_done / total_seances.to_f * 100).round(1)
+    end
     @average_serie_by_seance = average_serie_by_seance
   end
 
