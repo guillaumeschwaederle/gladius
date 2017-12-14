@@ -5,34 +5,33 @@
     </p>
     <table class="table mb-0 table-responsive">
         <thead>
-        <tr>
-            <th>Voir la Seance</th>
-            <th>Date</th>
-            <th>Heure</th>
-            <th>Nom du programme</th>
-            <th>Statut</th>
-            <th>Completion (%)</th>
-            <th>Supprimer</th>
-        </tr>
+            <tr>
+                <th>Voir la Seance</th>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Nom du programme</th>
+                <th>Statut</th>
+                <th>Completion (%)</th>
+                <th>Supprimer</th>
+            </tr>
         </thead>
         <tbody>
-        <% @seances.each do |seance| %>
-                <tr class="row-seance">                    
-                    <td><center><%= link_to '<i class="fa fa-eye icon-open-show-seance" aria-hidden="true">'.html_safe, seance_path(seance) %></center></td>
-                    <td><%= seance.date.to_formatted_s(:short).first(6)  %></td>
-                    <td><%= seance.date.to_formatted_s(:time)%></td>
-                    <td><b><%=seance.training.name %><b></td>
-                    <% if seance.percent != 0 %>
-                        <td><span class="badge badge-success">Réalisé</span></td>
-                    <% else %>
-                        <td><span class="badge badge-warning">A faire</span></td>
-                    <% end %>
-                    <td><%= seance.percent %></td>
-                    <td><%= link_to '<i class="fa fa-trash-o icon-delete-seance" aria-hidden="true">'.html_safe, seance_path(seance), method: :delete,
-      data: { confirm: "Veuillez confirmez la suppression de la séance" } %></td>
-                </tr>   
-
-        <% end %>
+            <% @seances.each do |seance| %>
+                    <tr class="row-seance">                    
+                        <td><center><%= link_to '<i class="fa fa-eye icon-open-show-seance" aria-hidden="true">'.html_safe, seance_path(seance) %></center></td>
+                        <td><%= seance.date.to_formatted_s(:short).first(6)  %></td>
+                        <td><%= seance.date.to_formatted_s(:time)%></td>
+                        <td><b><%=seance.training.name %><b></td>
+                        <% if seance.percent != 0 %>
+                            <td><span class="badge badge-success">Réalisé</span></td>
+                        <% else %>
+                            <td><span class="badge badge-warning">A faire</span></td>
+                        <% end %>
+                        <td><%= seance.percent %></td>
+                        <td><%= link_to '<i class="fa fa-trash-o icon-delete-seance" aria-hidden="true">'.html_safe, seance_path(seance), method: :delete,
+                            data: { confirm: "Veuillez confirmez la suppression de la séance" } %></td>
+                    </tr>   
+            <% end %>
         </tbody>
     </table>
 </div>
