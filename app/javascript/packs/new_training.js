@@ -1,3 +1,5 @@
+import './btn_suppression'
+
 String.prototype.sansAccent = function () {
     var accent = [
         /[\300-\306]/g, /[\340-\346]/g, // A, a
@@ -157,7 +159,7 @@ programmeName.addEventListener('keyup', (event) => {
     validateForm();
 });
 
-// SEARCH 
+// SEARCH
 
 const input = document.getElementById('search-exos');
 const ps = document.querySelectorAll('.exercices-cards-searched')
