@@ -6,12 +6,12 @@
     <table class="table mb-0 table-responsive">
         <thead>
             <tr>
-                <th>Voir la Seance</th>
+                <th>Détail</th>
                 <th>Date</th>
                 <th>Heure</th>
-                <th>Nom du programme</th>
+                <th>Programme</th>
                 <th>Statut</th>
-                <th>Completion (%)</th>
+                <th>Complétion</th>
                 <th>Supprimer</th>
             </tr>
         </thead>
@@ -27,7 +27,7 @@
                         <% else %>
                             <td><span class="badge badge-warning">A faire</span></td>
                         <% end %>
-                        <td><%= seance.percent %></td>
+                        <td><%= seance.percent * 100 %> %</td>
                         <td><%= link_to '<i class="fa fa-trash-o icon-delete-seance" aria-hidden="true">'.html_safe, seance_path(seance), method: :delete,
                             data: { confirm: "Veuillez confirmez la suppression de la séance" } %></td>
                     </tr>   

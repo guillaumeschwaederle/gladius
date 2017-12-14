@@ -8,7 +8,7 @@
                         <ol class="breadcrumb hide-phone p-0 m-0">
                             <li class="breadcrumb-item"><a href="#">
                             <%= link_to new_exercice_path do %>
-                              <button class="btn btn-outline-primary btn-block">Créer un exercice</button>
+                              <button class="btn btn-outline-primary btn-lg">Créer un exercice</button>
                             <% end %>
                             </a></li>
 
@@ -18,6 +18,13 @@
                 </div>
             </div>
         </div>
+                <% @categories = @exercices.map { |e| e.category  }.uniq %>
+      <% ind = @categories.find_index("Exercice personnel") %>
+      <% if ind %>
+        <%  @categories.insert(0, @categories.delete(@categories[ind])) %>
+      <% else %>
+      <%  @categories.insert(0, "Exercice personnel") %>
+      <% end %>
         <% @categories.each do |cat| %>
           <div class= "title-left-layout underline-title">
             <h2><%= cat.capitalize %></h2>

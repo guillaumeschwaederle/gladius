@@ -2,7 +2,7 @@ class TrainingsController < ApplicationController
   before_action :set_training, only: [:show, :destroy]
 
   def index
-    @trainings = Training.all
+    @trainings = current_user.profile.trainings
   end
 
 
