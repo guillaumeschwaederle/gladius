@@ -25,11 +25,11 @@ Tu ne connais pas tes limites avant de les avoir dépassées <i class="fa fa-quo
       </div>
 
          <div class="col-lg-6">
-            <%= render 'table_index_seances' %>
+            <%= render 'table_index_seances', text: "réalisées", seances: @seances.select { |seance| seance.completions.empty? == false } %>
          </div>
          <!-- end col -->
          <div class="col-lg-6">
-            <%= render 'table_index_seances' %>
+            <%= render 'table_index_seances', text: "à venir", seances: @seances.select { |seance| seance.completions.empty? } %>
          </div>
          <!-- end col -->
 
