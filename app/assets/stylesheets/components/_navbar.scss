@@ -2,13 +2,17 @@
   margin-top: 20px;
 }
 
-
 .white-text {
-    color: white !important;
+  color: white !important;
+  padding: 12px 15px;
+  letter-spacing: 0,5px;
+}
+
+.text-space{
+  margin-right: 27px;
 }
 
 .white-text:hover {
-    opacity: 0.8 !important;
+background-size: 18px;
+border-bottom: 6px solid #ffaa00;
 }
-
-
