@@ -1,4 +1,7 @@
-<% @categories =  @exercices.map { |e| e.category }.uniq %>
+
+
+<% @categories = tab =  @exercices.map { |e| e.category  }.uniq.sort{|e| e.chars.length} %>
+<% tab.each { |c| } %>
 <div class="container">
   <% @categories.each do |cat| %>
     <div class= "title-left-layout underline-title">
@@ -10,7 +13,7 @@
           <div class="card m-b-20"  data-name="<%= exercice.name %>">
             <div class="card-body card-exercice-hover">
               <h2><%= exercice.name %> </h2>
-                <p>  <%= exercice.description.first(90) + "..." %> </p>
+                <p>  <%= exercice.description.first(120) + "..." %> </p>
             </div>
             <div class= "card-footer text-muted">
               Catégorie : <strong><%= exercice.category.capitalize %></strong>
