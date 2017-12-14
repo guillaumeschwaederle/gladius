@@ -1,3 +1,25 @@
+String.prototype.sansAccent = function () {
+    var accent = [
+        /[\300-\306]/g, /[\340-\346]/g, // A, a
+        /[\310-\313]/g, /[\350-\353]/g, // E, e
+        /[\314-\317]/g, /[\354-\357]/g, // I, i
+        /[\322-\330]/g, /[\362-\370]/g, // O, o
+        /[\331-\334]/g, /[\371-\374]/g, // U, u
+        /[\321]/g, /[\361]/g, // N, n
+        /[\307]/g, /[\347]/g, // C, c
+    ];
+    var noaccent = ['A', 'a', 'E', 'e', 'I', 'i', 'O', 'o', 'U', 'u', 'N', 'n', 'C', 'c'];
+
+    var str = this;
+    for (var i = 0; i < accent.length; i++) {
+        str = str.replace(accent[i], noaccent[i]);
+    }
+
+    return str;
+}
+
+
+
 const newSerie = (text, x) => {
     return `<div class= "card-exercice-new-serie" data-name= "${text}">
         <input type="hidden" value="${text}" name="serie${x}[exercice_name]">
@@ -135,6 +157,21 @@ programmeName.addEventListener('keyup', (event) => {
     validateForm();
 });
 
+// SEARCH 
 
+const input = document.getElementById('search-exos');
+const ps = document.querySelectorAll('.exercices-cards-searched')
+
+input.addEventListener('keyup', (event) => {
+    event.preventDefault();
+    ps.forEach(function (p) {
+        if (p.innerText.toLowerCase().match(input.value.toLowerCase())) {
+            console.log(p.innerText);
+            p.classList.remove('hidden')
+        } else {
+            p.classList.add('hidden')
+        }
+    });
+});
 
 
