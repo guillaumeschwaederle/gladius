@@ -7,8 +7,11 @@ class SeancesController < ApplicationController
     @seances = Seance.all
     @stat_trainings = trainings_completion
     @stat_seances = seances_completion
-    @nb_seances = nb_seances
-    @all_goal = all_goal
+    @nb_seances = total_seances
+    @percent_done = percent_done
+    @total_done = total_done
+    @total_seances_done = total_seances_done
+    @percent_seances = (total_seances_done / total_seances * 100).round(1)
   end
 
   def show
@@ -37,7 +40,7 @@ class SeancesController < ApplicationController
     current_user.profile.trainings.each do |training|
       arr << training.percent
     end
-    (arr.sum / arr.count * 100).round()
+    (arr.sum / arr.count * 100).round(1)
   end
 
   def seances_completion
@@ -47,10 +50,20 @@ class SeancesController < ApplicationController
         arr << seance.percent
       end
     end
-    (arr.sum / arr.count * 100).round()
+    (arr.sum / arr.count * 100).round(1)
   end
 
-  def nb_seances
+  def total_seances_done
+    sum = 0
+    current_user.profile.trainings.each do |training|
+      training.seances.each do |seance|
+        sum += 1 unless seance.completions.empty?
+      end
+    end
+    sum
+  end
+
+  def total_seances
     sum = 0
     current_user.profile.trainings.each do |training|
       sum += training.seances.count
@@ -58,13 +71,31 @@ class SeancesController < ApplicationController
     sum
   end
 
-  def all_goal
+  def total_done
     arr = []
     current_user.profile.trainings.each do |training|
-      training.series.each do |serie|
-        arr << serie.goal
+      training.seances.each do |seance|
+        seance.completions.each do |completion|
+          arr << completion.done
+        end
       end
     end
-    arr
+    arr.sum
+  end
+
+  def percent_done
+    arr = []
+    current_user.profile.trainings.each do |training|
+      training.seances.each do |seance|
+        seance.completions.each do |completion|
+          arr << completion.done / completion.serie.goal.to_f * 100
+        end
+      end
+    end
+    (arr.sum / arr.count).round(1)
+  end
+
+  def favorite_training
+
   end
 end
