@@ -24,7 +24,11 @@ class Training < ApplicationRecord
         sum_done += completion.done
       end
     end
-    sum_done / sum_goal.to_f
+    if sum_goal == 0
+      0
+    else
+      sum_done / sum_goal.to_f
+    end
   end
 
   def exercice_count
