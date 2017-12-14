@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171212135004) do
+ActiveRecord::Schema.define(version: 20171214144653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20171212135004) do
     t.datetime "updated_at", null: false
     t.string "category"
     t.text "description"
+    t.bigint "profile_id"
+    t.index ["profile_id"], name: "index_exercices_on_profile_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -114,6 +116,7 @@ ActiveRecord::Schema.define(version: 20171212135004) do
 
   add_foreign_key "completions", "seances"
   add_foreign_key "completions", "series", column: "serie_id"
+  add_foreign_key "exercices", "profiles"
   add_foreign_key "profiles", "users"
   add_foreign_key "seances", "trainings"
   add_foreign_key "series", "exercices"

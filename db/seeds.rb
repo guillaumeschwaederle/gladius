@@ -20,6 +20,24 @@ require 'faker'
 
 # Seeds des Exercices
 
+
+
+
+# Seeds des Users
+
+puts "Creating Users..."
+user = User.create!(
+    email: "user@gmail.com",
+    password: "123456"
+)
+
+profile = Profile.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    user: user
+)
+
+
 categories = ["abdominaux", "pectoraux", "dos", "epaules", "biceps", "triceps", "avant-bras", "cuisses-fessiers", "mollets"]
 
 names = []
@@ -46,7 +64,7 @@ categories.each do |category|
             descriptions << description
     end
     names.each_with_index do |name, index|
-            Exercice.create!(name: names[index], category: category, description: descriptions[index])
+            Exercice.create!(name: names[index], category: category, description: descriptions[index], profile_id: Profile.first.id)
     end
 end
 
@@ -60,22 +78,6 @@ p descriptions.size
 puts "Number of category : "
 p categories.size
 puts "__________________"
-
-
-
-# Seeds des Users
-
-puts "Creating Users..."
-user = User.create!(
-    email: "user@gmail.com",
-    password: "123456"
-)
-
-profile = Profile.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    user: user
-)
 
 n = 1
 users = []
@@ -140,15 +142,16 @@ puts "Start Training done creation"
 end
 puts "End Training done creation"
 
-
+p Training.first
 ########### Seeds Seances
 x = 0
 d = DateTime.now
 puts 'Start Seances'
 5.times do
-  t = Training.find(x + 1)
+  t = Training.first
+  p t
   seance = Seance.create!(
-    date: d - x,
+    date: d - x ,
     training: t
   )
   t.series.each do |serie|

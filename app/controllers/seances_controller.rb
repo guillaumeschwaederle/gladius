@@ -4,7 +4,10 @@ class SeancesController < ApplicationController
 
 
   def index
-    @seances = current_user.profile.seances
+    @seances = []
+    current_user.profile.trainings.each do |train|
+      train.seances.each {|seance| @seances << seance }
+    end
     @stat_trainings = trainings_completion
     @stat_seances = seances_completion
     @nb_seances = total_seances
