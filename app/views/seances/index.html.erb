@@ -21,16 +21,16 @@
             <p class="text-muted mb-0">Nombre moyen de séries par séance</p>
          </div>
       </div>
-      
+
          <div class="col-lg-6">
-            <%= render 'table_index_seances' %>
+            <%= render 'table_index_seances', text: "réalisées", seances: @seances.select { |seance| seance.completions.empty? == false } %>
          </div>
          <!-- end col -->
          <div class="col-lg-6">
-            <%= render 'table_index_seances' %>
+            <%= render 'table_index_seances', text: "à venir", seances: @seances.select { |seance| seance.completions.empty? } %>
          </div>
          <!-- end col -->
-      
+
    </div>
 </div>
 <% content_for(:after_js) do %>

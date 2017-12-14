@@ -1,5 +1,5 @@
 <div class="card-box">
-    <h4 class="header-title m-t-0">Mes Seances</h4>
+    <h4 class="header-title m-t-0">Mes Seances <%= text %></h4>
     <p class="text-muted m-b-25 font-13">
         La liste de mes séances
     </p>
@@ -16,8 +16,8 @@
             </tr>
         </thead>
         <tbody>
-            <% @seances.each do |seance| %>
-                    <tr class="row-seance">                    
+            <% seances.sort_by {|obj| obj.date}.each do |seance| %>
+                    <tr class="row-seance">
                         <td><center><%= link_to '<i class="fa fa-eye icon-open-show-seance" aria-hidden="true">'.html_safe, seance_path(seance) %></center></td>
                         <td><%= seance.date.to_formatted_s(:short).first(6)  %></td>
                         <td><%= seance.date.to_formatted_s(:time)%></td>
@@ -30,7 +30,7 @@
                         <td><%= seance.percent * 100 %> %</td>
                         <td><%= link_to '<i class="fa fa-trash-o icon-delete-seance" aria-hidden="true">'.html_safe, seance_path(seance), method: :delete,
                             data: { confirm: "Veuillez confirmez la suppression de la séance" } %></td>
-                    </tr>   
+                    </tr>
             <% end %>
         </tbody>
     </table>
