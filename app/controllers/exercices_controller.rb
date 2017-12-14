@@ -2,7 +2,7 @@ class ExercicesController < ApplicationController
   before_action :set_exercice, only: [ :edit, :update, :destroy]
 
   def index
-   @exercices = Exercice.all
+   @exercices = current_user.profile.exercices + Profile.first.exercices
   end
 
   def new
@@ -12,6 +12,7 @@ class ExercicesController < ApplicationController
   def create
     @exercice = Exercice.new(exercice_params)
     @exercice.category = 'Exercice personnel'
+    @exercice.profile = current_user.profile
     if @exercice.save
       redirect_to exercices_path
     else

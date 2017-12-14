@@ -1,6 +1,6 @@
 class Seance < ApplicationRecord
   belongs_to :training
-  belongs_to :profile
+#  belongs_to :profile
 
   has_many :completions, dependent: :destroy
   has_many :series, through: :completions

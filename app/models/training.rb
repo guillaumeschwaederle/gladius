@@ -5,6 +5,7 @@ class Training < ApplicationRecord
   has_many :exercices, through: :series
   has_many :seances, dependent: :destroy
   has_many :completions, through: :seances, dependent: :destroy
+
   validates :name, presence: true
 
   def sum_reps
