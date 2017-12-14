@@ -11,7 +11,7 @@
                               <button class="btn btn-outline-primary btn-block">Créer un exercice</button>
                             <% end %>
                             </a></li>
-                            
+
                         </ol>
                     </div>
                     <h4 class="page-title">Mes Exercices</h4>
@@ -28,10 +28,13 @@
                 <div class="card m-b-20"  data-name="<%= exercice.name %>">
                   <div class="card-body card-exercice-hover">
                     <h2><%= exercice.name %> </h2>
-                      <p>  <%= exercice.description.first(120) + "..." %> </p>
+                    <p><%= exercice.description.first(120) + "..." %></p>
                   </div>
                   <div class= "card-footer text-muted">
-                    Catégorie : <strong><%= exercice.category.capitalize %></strong>
+                    Catégorie : <strong><%= cat.capitalize %></strong>
+                    <% if cat == "Exercice personnel" %>
+                      <%= link_to 'Supprimer'.html_safe, exercice_path(exercice), method: :delete, data: { confirm: "Etes-vous sur(e) de vouloir supprimer cet exercice ?" }%>
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -39,3 +42,4 @@
           </div>
         <% end %>
       </div>
+
