@@ -54,11 +54,12 @@ class SeancesController < ApplicationController
     current_user.profile.trainings.each do |training|
       arr << training.percent
     end
-    if arr = []
-      0
+    if arr.count == 0
+      a = 0
     else
-      (arr.sum / arr.count * 100).round(1)
+      a = (arr.sum / arr.count * 100).round(1)
     end
+    a
   end
 
   def seances_completion
@@ -68,11 +69,12 @@ class SeancesController < ApplicationController
         arr << seance.percent
       end
     end
-    if arr = []
-      0
+    if arr.count == 0
+      a = 0
     else
-      (arr.sum / arr.count * 100).round(1)
+      a = (arr.sum / arr.count * 100).round(1)
     end
+    a
   end
 
   def total_seances_done
@@ -114,11 +116,12 @@ class SeancesController < ApplicationController
         end
       end
     end
-    if arr = []
-      0
+    if arr.count == 0
+      a = 0
     else
-      (arr.sum / arr.count.to_f).round(1)
+      a = (arr.sum / arr.count.to_f).round(1)
     end
+    a
   end
 
   def average_serie_by_seance
@@ -128,10 +131,11 @@ class SeancesController < ApplicationController
         arr << seance.training.series.count
       end
     end
-    if arr = []
-      0
+    if arr.count == 0
+      a = 0
     else
-      (arr.sum / arr.count.to_f).round(1)
+      a = (arr.sum / arr.count.to_f).round(1)
     end
+    a
   end
 end
