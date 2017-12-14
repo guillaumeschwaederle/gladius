@@ -2,7 +2,7 @@ class Serie < ApplicationRecord
   belongs_to :exercice
   belongs_to :training
 
-  has_many :completions
+  has_many :completions, dependent: :destroy
 
   validates :goal, presence: true
 

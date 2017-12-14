@@ -3,9 +3,8 @@ class Training < ApplicationRecord
 
   has_many :series, class_name: "Serie", dependent: :destroy
   has_many :exercices, through: :series
-  has_many :seances
-  has_many :completions, through: :seances
-
+  has_many :seances, dependent: :destroy
+  has_many :completions, through: :seances, dependent: :destroy
   validates :name, presence: true
 
   def sum_reps

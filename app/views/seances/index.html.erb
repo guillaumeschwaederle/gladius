@@ -1,37 +1,33 @@
 <div class="container-fluid">
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="page-title-box">
-                <div class="btn-group pull-right">
-                    <ol class="breadcrumb hide-phone p-0 m-0">
-                        <li>Tu ne connais pas tes limites avant de les avoir dépasées</li>
-                    </ol>
-                </div>
-                <h4 class="page-title">Mon Tableau de Bord</h4>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-      <%= render 'shared/card_stat', percent: @percent_seances, nombre: @total_seances_done, text: "Séances réalisées"%>
-      <%= render 'shared/card_stat', percent: @stat_seances, nombre: @stat_seances, text: "Complétion des Séances"%>
-      <%= render 'shared/card_stat', percent: @percent_done, nombre: @total_done, text: "Répétitions réalisées" %>
-      <div class="col-3">
-        <div class="widget-simple-chart text-right card-box card_stat">
-            <h3 class="text-primary m-t-10"><span class="counter"><%= @average_serie_by_seance %></span></h3>
-            <p class="text-muted mb-0">Nombre moyen de séries par séance</p>
-        </div>
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="page-title-box">
+                  <div class="btn-group pull-right">
+                      <ol class="breadcrumb hide-phone p-0 m-0">
+                          <li>Tu ne connais pas tes limites avant de les avoir dépassées</li>
+                      </ol>
+                  </div>
+                  <h4 class="page-title">Mon Dashboard</h4>
+              </div>
+          </div>
       </div>
-    </div>
-<div class="row">
-    <div class="col-lg-6">
-        <%= render 'table_index_seances' %>
-    </div> <!-- end col -->
-    <div class="col-lg-6">
-        <%= render 'table_index_seances' %>
-    </div> <!-- end col -->
-</div>
-
+     <div class="row">
+       <%= render 'shared/card_stat', percent: @percent_seances, nombre: @total_seances_done, text: "Séances réalisées"%>
+       <%= render 'shared/card_stat', percent: @stat_seances, nombre: @stat_seances, text: "Complétion des Séances"%>
+       <%= render 'shared/card_stat', percent: @percent_done, nombre: @total_done, text: "Répétitions réalisées" %>
+       <div class="col-3">
+         <div class="widget-simple-chart text-right card-box card_stat">
+             <h3 class="text-primary m-t-10"><span class="counter"><%= @average_serie_by_seance %></span></h3>
+             <p class="text-muted mb-0">Nombre moyen de séries par séance</p>
+      </div>
+      <div class="row">
+          <div class="col-lg-6">
+              <%= render 'table_index_seances' %>
+          </div> <!-- end col -->
+          <div class="col-lg-6">
+              <%= render 'table_index_seances' %>
+          </div> <!-- end col -->
+      </div>
 </div>
 
 <% content_for(:after_js) do %>
