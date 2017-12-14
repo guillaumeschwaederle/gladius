@@ -11,7 +11,8 @@ class SeancesController < ApplicationController
     @percent_done = percent_done
     @total_done = total_done
     @total_seances_done = total_seances_done
-    @percent_seances = (total_seances_done / total_seances * 100).round(1)
+    @percent_seances = (@total_seances_done / total_seances.to_f * 100).round(1)
+    @average_serie_by_seance = average_serie_by_seance
   end
 
   def show
@@ -79,7 +80,7 @@ class SeancesController < ApplicationController
   def total_seances
     sum = 0
     current_user.profile.trainings.each do |training|
-      sum += training.seances.count
+      sum += training.seances.count unless training.seances.empty?
     end
     sum
   end
@@ -105,6 +106,16 @@ class SeancesController < ApplicationController
         end
       end
     end
-    (arr.sum / arr.count).round(1)
+    (arr.sum / arr.count.to_f).round(1)
+  end
+
+  def average_serie_by_seance
+    arr = []
+    current_user.profile.trainings.each do |training|
+      training.seances.each do |seance|
+        arr << seance.training.series.count
+      end
+    end
+    (arr.sum / arr.count.to_f).round(1)
   end
 end
