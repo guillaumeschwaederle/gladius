@@ -1,3 +1,5 @@
+import './btn_suppression'
+
 const newSerie = (text, x) => {
     return `<div class= "card-exercice-new-serie" data-name= "${text}">
         <input type="hidden" value="${text}" name="serie${x}[exercice_name]">
@@ -135,7 +137,7 @@ programmeName.addEventListener('keyup', (event) => {
     validateForm();
 });
 
-// SEARCH 
+// SEARCH
 
 const input = document.getElementById('search-exos');
 const ps = document.querySelectorAll('.exercices-cards-searched')
