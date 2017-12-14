@@ -40,7 +40,7 @@
                   <div class= "card-footer text-muted">
                     Catégorie : <strong><%= cat.capitalize %></strong>
                     <% if cat == "Exercice personnel" %>
-                      <%= link_to 'Supprimer'.html_safe, exercice_path(exercice), method: :delete, remote: true%>
+                      <%= link_to '<i class="fa fa-trash-o poubelle"></i>'.html_safe, exercice_path(exercice), method: :delete, remote: true%>
                     <% end %>
                   </div>
                 </div>
