@@ -24,6 +24,7 @@
         <%  @categories.insert(0, @categories.delete(@categories[ind])) %>
       <% else %>
       <%  @categories.insert(0, "Exercice personnel") %>
+        <h4> Vous n'avez pas encore crée d'exercice personnalisé. Créez votre premier exercice, en cliquant sur le lien ci-contre.</h4>
       <% end %>
         <% @categories.each do |cat| %>
           <div class= "title-left-layout underline-title">
@@ -37,7 +38,7 @@
                     <h2><%= exercice.name %> </h2>
                     <p><%= exercice.description.first(120) + "..." %></p>
                   </div>
-                  <div class= "card-footer text-muted">
+                  <div class= "card-footer text-muted footer-suppr">
                     Catégorie : <strong><%= cat.capitalize %></strong>
                     <% if cat == "Exercice personnel" %>
                       <%= link_to '<i class="fa fa-trash-o poubelle"></i>'.html_safe, exercice_path(exercice), method: :delete, remote: true%>
