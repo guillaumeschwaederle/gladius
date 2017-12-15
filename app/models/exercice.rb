@@ -1,5 +1,5 @@
 class Exercice < ApplicationRecord
-    has_many :series, class_name: "Serie"
+    has_many :series, class_name: "Serie", dependent: :destroy
     belongs_to :profile
 
     validates :name, presence: true
